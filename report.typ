@@ -26,6 +26,7 @@
 // Boletines
 //
 #include "/main/boletin-01.typ"
+#include "/main/boletin-03.typ"
 
 //
 //

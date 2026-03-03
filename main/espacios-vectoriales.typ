@@ -1,8 +1,9 @@
 #import "/metadata.typ": *
-#import "/enviroments.typ": *
 #import "@preview/clean-cnam-template:1.6.2": *
+#import "/enviroments.typ": *
 
 #set footnote(numbering: "*")
+
 
 #pagebreak()
 
@@ -27,7 +28,7 @@
 
 #ideabox()[
   $
-    K #text()[cuerpo] <==> cases((K,+) #text()[abeliano], (k without {0}) #text()[abeliano])
+    K #text()[cuerpo] <==> cases((K,+) #text()[abeliano], (K without {0}) #text()[abeliano])
   $
 ]
 
@@ -102,23 +103,24 @@
   3. $
       lambda v eq 0 <==> lambda eq 0 or v eq 0
     $
-  #dem()[
-    1. $
-        lambda · 0 eq lambda (v-v) eq lambda v - lambda v = 0
-      $
-    2. $
-        (-lambda)v eq lambda(-v) <=> (-lambda)v + lambda v eq lambda(-v) + lambda v <=> \
-        <=> (- lambda + lambda)v eq lambda(-v + v) <=> 0 eq 0.
-      $
-    3. "$==>$"$quad$ Supongamos que $lambda eq.not 0$,
-      $
-        lambda v eq 0 => lambda^(-1) lambda v eq lambda^(-1) 0 => v eq 0
-      $
-      Por lo contrario, suponiendo que $lambda eq 0$, ya es trivial.
-
-      "$<==$"$quad$ La demostración es trivial para ambos casos.
-  ]
 ]
+#dem()[
+  1. $
+      lambda · 0 eq lambda (v-v) eq lambda v - lambda v = 0
+    $
+  2. $
+      (-lambda)v eq lambda(-v) <=> (-lambda)v + lambda v eq lambda(-v) + lambda v <=> \
+      <=> (- lambda + lambda)v eq lambda(-v + v) <=> 0 eq 0.
+    $
+  3. "$==>$"$quad$ Supongamos que $lambda eq.not 0$,
+    $
+      lambda v eq 0 => lambda^(-1) lambda v eq lambda^(-1) 0 => v eq 0
+    $
+    Por lo contrario, suponiendo que $lambda eq 0$, ya es trivial.
+
+    "$<==$"$quad$ La demostración es trivial para ambos casos.
+]
+
 
 Sean ${U_i}_(i in I)$ una familia de subespacios de $V$, entonces
 $
@@ -220,17 +222,17 @@ $
 
 #theorem()[
   Si existe $U plus.o W$, todo vector de $U + W$ se puede escribir de forma única como $u+w$ con $u in U$ y $w in W$
-  #dem[
-    Sean $u,u' in U$ y $w,w' in W$ tales que $exists U plus.o W$, luego
-    $
-      u + w eq u' + w' => u - u'(in U) eq w - w' (in W) => \
-      cases(reverse: #true, => u -u' eq w - w' in U inter W, quad quad quad quad quad quad quad W inter U = 0) => \
-      => cases(u-u'=0, w-w'=0) => u - u' + w - w' = 0 => u + w = 0 => \
-      => u=0=w=u'=w'
-    $
-  ]
-]
 
+]
+#dem[
+  Sean $u,u' in U$ y $w,w' in W$ tales que $exists U plus.o W$, luego
+  $
+    u + w eq u' + w' => u - u'(in U) eq w - w' (in W) => \
+    cases(reverse: #true, => u -u' eq w - w' in U inter W, quad quad quad quad quad quad quad W inter U = 0) => \
+    => cases(u-u'=0, w-w'=0) => u - u' + w - w' = 0 => u + w = 0 => \
+    => u=0=w=u'=w'
+  $
+]
 #definition()[
   Sean $V$ y $V'$ K-espacios vectoriales. Se dice que la aplicación $f:V -> V'$ es un aaplicación lineal si se verifica:
   1. $
@@ -263,14 +265,16 @@ $
   1. Si $U$ es un subespacio de $V$, entonces $f(U) eq {f(u) : u in U}$ es un subespacio de $V'$. Tambien, si $U eq #c[$S$]$, se cumple $f(U) eq #c[$f(S)$]$.
   2. Si $W$ es un subespacio de $V'$, entonces $f^(-1)(W)$ es subespacio de $V$.
 
-  #dem()[
-    1. Sabemos que $f(U) subset V'$, ya que, por lo menos, $f(0)=0$
-    $
-      forall f(u), f(u') in f(U), quad f(u) + f(u') eq f(u+u') in f(U), \
-      forall lambda in K, forall f(u) in f(U), quad lambda f(u) eq f(lambda u) in f(U)
-    $
-    2. Es análogo.
-  ]
+
+]
+
+#dem()[
+  1. Sabemos que $f(U) subset V'$, ya que, por lo menos, $f(0)=0$
+  $
+    forall f(u), f(u') in f(U), quad f(u) + f(u') eq f(u+u') in f(U), \
+    forall lambda in K, forall f(u) in f(U), quad lambda f(u) eq f(lambda u) in f(U)
+  $
+  2. Es análogo.
 ]
 
 #definition()[
@@ -291,14 +295,14 @@ $
   Sea $f: V -> V'$ una aplicación lineal.
   1. $f$ es inyectiva $<==> #Ker[f] eq 0$
   2. $f$ es sobreyectiva $<==> #Im[f] eq V'$
+]
 
-  #dem()[
-    1. "$==>$" $quad$ Si $v in #Ker[f]$, $f(v) eq 0$. Como es lineal, $f(0) eq 0$ y $f$ es inyectiva, se debe tener que $v eq 0$ y $#Ker[f] eq {0}$
+#dem()[
+  1. "$==>$" $quad$ Si $v in #Ker[f]$, $f(v) eq 0$. Como es lineal, $f(0) eq 0$ y $f$ es inyectiva, se debe tener que $v eq 0$ y $#Ker[f] eq {0}$
 
-    "$<==$"$quad$ Sean $u,v in V$ tales que $f(u) eq f(v)$, es decir, $f(u-v) eq 0$ o, equivalentemente, $u-v in #Ker[f]$, por lo que $u eq v$, y en consecuencia $f$ es inyectiva.
+  "$<==$"$quad$ Sean $u,v in V$ tales que $f(u) eq f(v)$, es decir, $f(u-v) eq 0$ o, equivalentemente, $u-v in #Ker[f]$, por lo que $u eq v$, y en consecuencia $f$ es inyectiva.
 
-    2. Es trivial.
-  ]
+  2. Es trivial.
 ]
 
 #definition(title: "Isomorfismo")[
@@ -346,28 +350,29 @@ $
     forall lambda in K, lambda(v + U) eq lambda v + U.
   $
 
-  #dem()[
-    Sea
-    $
-      V slash U times V slash U --> V slash U \
-      (v+U,v' +U) ~~> v + v' + U
-    $
-    luego
-    $
-      cases(
-        reverse: #true,
-        v+U eq u + U,
-        v' + U eq u' + U
-      ) => & (v+U)+(v' + U)       & eq.quest & (u+U)+(u' + U) <=> \
-       <=> & quad quad (v+v') + U & eq.quest & quad quad (u+u')+U =>
-    $
-    $
-      =>(v+v')-(u+u') in U => (v+v')+(u+u') eq v-u + v' - u' in U
-    $
-    Por lo que la suma esta bien definida.
 
-    El producto es análogo.
-  ]
+]
+#dem()[
+  Sea
+  $
+    V slash U times V slash U --> V slash U \
+    (v+U,v' +U) ~~> v + v' + U
+  $
+  luego
+  $
+    cases(
+      reverse: #true,
+      v+U eq u + U,
+      v' + U eq u' + U
+    ) => & (v+U)+(v' + U)       & eq.quest & (u+U)+(u' + U) <=> \
+     <=> & quad quad (v+v') + U & eq.quest & quad quad (u+u')+U =>
+  $
+  $
+    =>(v+v')-(u+u') in U => (v+v')+(u+u') eq v-u + v' - u' in U
+  $
+  Por lo que la suma esta bien definida.
+
+  El producto es análogo.
 ]
 
 #definition()[
@@ -421,60 +426,57 @@ $
     (V slash U)/(W slash U) tilde.equiv V slash W
   $
 
-  #dem()[
-    Sea
-    $
-      V slash U & -->^(f) V slash W \
-          v + U & ~~> f(v + U) eq v + W
-    $
-    Si $v+U eq v' + U$, $quad v+W eq.quest v' + W$, veamos
-    $
-      v+U eq v'+U <=> v-v' in U subset W => v-v' in W => v+W eq v' + W
-    $
-    luego $f$ esta bien definida.
 
-    ¿Es $f$ lineal?
-    $
-      forall v in U, quad v' + U in V slash U cases(
-        f((v+U)+(v'+U)) eq.quest f(v+U)+f(v'+U),
-        f(lambda(v+U)) eq.quest lambda f(v+U)
-      )
-    $
-
-    Veamoslo para la suma:
-    $
-      f((v+U)+(v'+U)) eq f(v + v' + U) eq.def v+v'+W eq\
-      eq (v+W)+(v'+W) eq f(v+U) + f(v'+U)
-    $
-
-    Para el producto:
-    $
-      f(lambda(v+U)) eq f(lambda v+U) eq lambda v + W eq lambda(u + W) eq lambda f(v+U)
-    $
-    Luego $f$ es lineal.
-
-    ¿Es $f$ biyectiva?
-
-    Para demostrarlo, veremos si es sobreyectiva y inyectiva.
-
-    ¿Es $f$ sobreyectiva?
-    $
-      forall v+W in V slash W, quad exists v + U in V slash U : f(v+U) eq v+ W => #Im[f] eq V slash W
-    $
-    Luego sí lo es.
-
-    ¿Es $f$ inyectiva?
-    $
-      #Ker[f] eq {v+U in V slash U : f(v + U) eq 0} eq {v+U in V slash U : v+W eq 0} \
-      eq {v+U in V slash U :v in W} eq W slash U
-    $
-    Luego por el primer Teorema de Isomorfía
-    $
-      (V slash U)/(#Ker[f]) eq (V slash U)/(W slash U) tilde.equiv V slash W
-    $
-  ]
 ]
+#dem()[
+  Sea
+  $
+    V slash U & -->^(f) V slash W \
+        v + U & ~~> f(v + U) eq v + W
+  $
+  Si $v+U eq v' + U$, $quad v+W eq.quest v' + W$, veamos
+  $
+    v+U eq v'+U <=> v-v' in U subset W => v-v' in W => v+W eq v' + W
+  $
+  luego $f$ esta bien definida.
 
+  ¿Es $f$ lineal?
+  $
+    forall v in U, quad v' + U in V slash U cases(
+      f((v+U)+(v'+U)) eq.quest f(v+U)+f(v'+U),
+      f(lambda(v+U)) eq.quest lambda f(v+U)
+    )
+  $
+  Veamoslo para la suma:
+  $
+    f((v+U)+(v'+U)) eq f(v + v' + U) eq.def v+v'+W eq\
+    eq (v+W)+(v'+W) eq f(v+U) + f(v'+U)
+  $
+  Para el producto:
+  $
+    f(lambda(v+U)) eq f(lambda v+U) eq lambda v + W eq lambda(u + W) eq lambda f(v+U)
+  $
+  Luego $f$ es lineal.
+
+  ¿Es $f$ biyectiva?
+
+  Para demostrarlo, veremos si es sobreyectiva y inyectiva.
+  ¿Es $f$ sobreyectiva?
+  $
+    forall v+W in V slash W, quad exists v + U in V slash U : f(v+U) eq v+ W => #Im[f] eq V slash W
+  $
+  Luego sí lo es.
+
+  ¿Es $f$ inyectiva?
+  $
+    #Ker[f] eq {v+U in V slash U : f(v + U) eq 0} eq {v+U in V slash U : v+W eq 0} \
+    eq {v+U in V slash U :v in W} eq W slash U
+  $
+  Luego por el primer Teorema de Isomorfía
+  $
+    (V slash U)/(#Ker[f]) eq (V slash U)/(W slash U) tilde.equiv V slash W
+  $
+]
 #ideabox()[
   Recordemos que el primer Teorema de Isomorfía decía que siendo $f:A --> B$ isomorfismo, se cumple
   $
@@ -488,34 +490,36 @@ $
     (U_1 + U_2)/(U_1) tilde.equiv (U_2)/(U_1 inter U_2)
   $
 
-  #dem()[
-    Sea la siguiente descomposición
-    $
-      U_2 arrow.hook_(i) U_2 + U_1 -->_(pi) (U_1 +U_2)/U_1
-    $
-    tal que $pi compose i eq f$. Luego $f$ es lineal por ser composiciónde lineales.
-    $
-      #Ker[f] eq {u in U_2 : f(u) eq 0} eq {u in U_2 : u+U_1 eq 0} eq \
-      eq {u in U_2 : u+U_1 eq U_1} eq {u in U_2 : u in U_1} eq U_1 inter U_2
-    $
-    $f$ es sobreyectiva pues
-    $
-      forall u_1 + u_2 + U_1 in (U_1 + U_2)/U_1, quad exists u_2 in U_2 : f(u_2) eq u_1 +u_2 +U_1
-    $
-    luego
-    $
-      f(U_2) eq u_2 + U_1, quad u_1+u_2+U_1 eq u_2 +U_1 #text[, porque] \
-      u_1-u_2+u_2 eq u_1 in U_1
-    $
-    Por lo tanto,
-    $
-      #Im[f] eq (U_1 + U_2)/U_1
-    $
-    Y, finalmente, por el primer Teorema de la Isomorfía:
-    $
-      (U_1 + U_2)/(U_1) tilde.equiv (U_2)/(U_1 inter U_2)
-    $
-  ]
+
+]
+
+#dem()[
+  Sea la siguiente descomposición
+  $
+    U_2 arrow.hook_(i) U_2 + U_1 -->_(pi) (U_1 +U_2)/U_1
+  $
+  tal que $pi compose i eq f$. Luego $f$ es lineal por ser composiciónde lineales.
+  $
+    #Ker[f] eq {u in U_2 : f(u) eq 0} eq {u in U_2 : u+U_1 eq 0} eq \
+    eq {u in U_2 : u+U_1 eq U_1} eq {u in U_2 : u in U_1} eq U_1 inter U_2
+  $
+  $f$ es sobreyectiva pues
+  $
+    forall u_1 + u_2 + U_1 in (U_1 + U_2)/U_1, quad exists u_2 in U_2 : f(u_2) eq u_1 +u_2 +U_1
+  $
+  luego
+  $
+    f(U_2) eq u_2 + U_1, quad u_1+u_2+U_1 eq u_2 +U_1 #text[, porque] \
+    u_1-u_2+u_2 eq u_1 in U_1
+  $
+  Por lo tanto,
+  $
+    #Im[f] eq (U_1 + U_2)/U_1
+  $
+  Y, finalmente, por el primer Teorema de la Isomorfía:
+  $
+    (U_1 + U_2)/(U_1) tilde.equiv (U_2)/(U_1 inter U_2)
+  $
 ]
 
 #definition()[
@@ -591,3 +595,5 @@ $
   +
     En $RR[X]$, ${1}$ es linealmente independiente y ${1,2}$ no lo es.
 ]
+
+

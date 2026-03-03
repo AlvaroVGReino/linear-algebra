@@ -31,23 +31,30 @@
 
 #let Ker(body) = block(text()[Ker(#body)])
 
+#let Ctl(sym: sym.corner.t.l) = block(align(top + left)[#scale(x: 150%, y: 150%)[#sym]])
+
+#let Cbr(sym: sym.corner.b.r) = block(align()[#scale(x: 150%, y: 150%)[#sym]])
+
 #let q(qed) = align(right + bottom)[#qed()]
 
 #show link: text.with(fill: blue)
 
 #let dem = mathblock(
   blocktitle: "Demostración",
-  prefix: [_Demostración._],
+  prefix: align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] _Demostración._],
+  bodyfmt: body => align(left)[#body],
   inset: 5pt,
-  suffix: [#align(right + bottom)[#qed()]],
+  breakable: true,
+  suffix: [#align(right + bottom)[#qed()#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]]],
   radius: 5pt,
 )
 
 #let solution = mathblock(
   blocktitle: "Solución",
-  prefix: [_Solución._],
-  inset: 5pt,
-  suffix: [#align(right + bottom)[#qed()]],
+  prefix: align(top + left)[#text(fill: academic-colors.accent.lighten(50%))[#Ctl()] _Solución._],
+  inset: 10pt,
+  bodyfmt: body => align(left)[#text(fill: academic-colors.neutral-dark.lighten(10%))[#body]],
+  suffix: align(right + bottom)[#qed()#text(fill: academic-colors.accent.lighten(50%))[#Cbr()]],
   radius: 5pt,
 )
 
@@ -58,5 +65,23 @@
   titlix: title => align(left)[#title],
   bodyfmt: body => align(left)[#body],
   inset: 5pt,
+  radius: 5pt,
+)
+
+#let exercise = mathblock(
+  blocktitle: "Ejercicio",
+  prefix: align(left)[*Ejercicio.*],
+  inset: 5pt,
+  stroke: academic-colors.accent.darken(20%),
+  bodyfmt: body => align(left)[#body],
+  radius: 5pt,
+)
+
+#let example = mathblock(
+  blocktitle: "Ejemplo",
+  prefix: align(left)[*Ejemplo.*],
+  inset: 10pt,
+  stroke: academic-colors.accent.darken(20%),
+  bodyfmt: body => align(left)[#body],
   radius: 5pt,
 )
