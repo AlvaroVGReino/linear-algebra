@@ -51,3 +51,52 @@
 
   ]
 ]
+
+#exercise()[
+  Sea $f: RR_3[X] -> RR_3[X]$ tal que $f(p(X)) eq p'(X)$ (polinomio derivado). a) Prueba que $f$ es lineal. b) Calcula $f^(-1)(6X^2-5X+4)$. c) Calcula $#Ker[$f$]$ e $#Im[$f$]$.
+  #solution()[
+
+  ]
+]
+
+#exercise()[
+  Sea $V$ un espacio vectorial sobre un cuerpo $K$ y $f$ un endomorfismo de $V$. Prueba que $W eq {v in V : f(v) eq v}$ es un subespacio vectorial de $V$.
+  #solution()[
+
+  ]
+]
+
+#exercise()[
+  Sea $f: RR^3 -> RR^3$ la aplicación lineal definida por $f(1,0,0) eq (2,1,0)$, $f(0,1,0) eq (1,0,0)$ y $f(0,0,1) eq (3,1,0)$. Calcula #Ker[f] y #Im[f]. Estudia si $f$ es inyectiva o sobreyectiva.
+  #solution()[
+
+  ]
+]
+
+#exercise()[
+  En $RR_2[X]$ se considera el subespacio $U eq {a+b X^2 : a,b in RR}$.
+  + Encuentra $S,S' subset U$ tales que $S eq.not S'$ y $#c[$S$] eq #c[$S'$] eq U$.
+  + Prueba que $#c[$2x + U$] eq RR_2[X] slash U$.
+  #solution[
+
+  ]
+]
+
+#exercise()[
+  Sea $U eq {(x,y,z) in RR^3 : x+y-z eq 0}$. Razona si, en $RR^3 slash U$, las siguientes afirmaciones son verdaderas o falsas:
+  + $(1,2,3) + U eq (0,2,2) + U eq U$.
+  + Existe un único $alpha in RR$ tal que $(1,0,2) + U eq alpha((1,1,1) + U)$.
+
+  #solution()[
+
+
+  ]
+]
+
+#exercise()[
+  Considera el $RR$-espacio vectorial $V eq RR_5[X]$ y el subespacio $U eq RR_2[X]$. ¿Qué significa, para los polinomios $p(X) eq sum_(i eq 0)^5 alpha_i X^i$ y $q(X) eq sum_(i eq 0)^5 b_i X^i$, que $p(X) + U eq q(X) + U$?
+
+  #solution[
+
+  ]
+]
