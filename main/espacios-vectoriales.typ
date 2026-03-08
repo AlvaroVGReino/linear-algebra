@@ -2,8 +2,10 @@
 #import "@preview/clean-cnam-template:1.6.2": *
 #import "/enviroments.typ": *
 #import "@preview/cetz:0.4.2"
+#import "@preview/larrow:1.0.1": *
 
 #set footnote(numbering: "*")
+#let lal = arrow-label.with(dx: 0mm, dy: 0mm)
 
 
 #pagebreak()
@@ -663,14 +665,14 @@ $
 ]
 
 #definition()[
-  Sea $V$ un K-espacio vectorial y $S subset V$. Se dice que $S$ es un conjunto de vectores linealmente independiente si:
+  Sea $V$ un K-espacio vectorial y $S subset V$. Se dice que $S$ es un conjunto de vectores linealmente independiente (L.I. de ahora en adelante) si:
   $
     sum lambda_i s_i eq 0 quad (lambda_i in K, s_i in S) => lambda_i eq 0 quad forall i in I
   $
 ]
 
 #definition()[
-  $S$ es linealmente independiente si existe $sum lambda_i s_i eq 0, lambda_i in K, s_i in S, lambda_i eq 0 quad forall forall #footnote()[La notación "$forall forall$" significa "para casi todo". Referido a que existe una cantidad finita de elementos que no cumplen la condición] i in I quad (#text[con algún $lambda_i eq.not 0$])$
+  $S$ es linealmente independiente. si existe $sum lambda_i s_i eq 0, lambda_i in K, s_i in S, lambda_i eq 0 quad forall forall #footnote()[La notación "$forall forall$" significa "para casi todo". Referido a que existe una cantidad finita de elementos que no cumplen la condición] i in I quad (#text[con algún $lambda_i eq.not 0$])$
 ]
 
 #ideabox()[
@@ -683,7 +685,7 @@ $
 #example()[
   + El vector 0 es linealmente dependiente, pues $1·0 eq 0$ pero $1 eq 0$ no se cumple.
   + $0 in S => S$ linealmente dependiente.
-  + Para $S eq {v}$ es linealmente independiente $<==> v eq.not 0$
+  + Para $S eq {v}$ es L.I. $<==> v eq.not 0$
   + Sea $S eq {v_1, .. , v_n}, n>=2$, es linealmente dependiente $<==> exists v_i in S : v_i in gen(S without {v_i})$ y en tal caso se da que $gen(S) eq gen(S without {v_i})$. Por lo que $v_i$ es "redundante".
   #dem[
     4. "$==>$"
@@ -712,7 +714,7 @@ $
 #proposition()[
   Sean $S_1 subset V$, $S_2 subset V$ tales que $S_1 subset S_2$ y $V$ es un K-espacio vectorial. Entonces
   + Si $S_1$ es linealmente dependiente $==> S_2$ es linealmente dependiente.
-  + Si $S_2$ es linealmente independiente $==> S_1$ es linealmente independiente.
+  + Si $S_2$ es L.I. $==> S_1$ es L.I..
 ]
 
 #example()[
@@ -723,9 +725,9 @@ $
     $
     Por lo que si $exists lambda, mu, xi in RR without {0} ==> S$ es linealmente dependiente.
   +
-    El conjunto $S eq {v_1, v_2,v_3}$ es linealmente independiente.
+    El conjunto $S eq {v_1, v_2,v_3}$ es L.I..
 
-    ¿Es ${v_1+v_2+v_3,v_1-v_3,v_2-2v_3}$ linealmente independiente?
+    ¿Es ${v_1+v_2+v_3,v_1-v_3,v_2-2v_3}$ L.I.?
     $
       lambda(v_1+v_2+v_3) + mu(v_1-v_3) + xi(v_2-2v_3) eq 0 then \
       then lambda v_1 + lambda v_2 + lambda v_3 + mu v_1 - mu v_3 + xi v_2 - 2 xi v_3 eq 0 then \
@@ -752,15 +754,15 @@ $
     $
       lambda eq mu eq xi eq 0
     $
-    y es linealmente independiente.
+    y es L.I..
 
   +
-    En $RR[X]$, ${1}$ es linealmente independiente y ${1,2}$ no lo es.
+    En $RR[X]$, ${1}$ es L.I. y ${1,2}$ no lo es.
 ]
 
 #definition()[
   Sea $V$ un K-espacio vectorial y $S subset V$. Diremos que $S$ es una base de $V$ si y solo si:
-  - $S$ es linealmente independiente,
+  - $S$ es L.I.,
   - $gen(S) eq V$.
   Generalmente, se denotará por $base$.
 ]
@@ -806,7 +808,7 @@ $
   $
   Por definición $V subset gen(base)$. También es claro que $gen(base) subset V$, pues $base subset V$ y $V$ es un K-espacio vectorial. Por lo tanto $gen(base) eq V$.
 
-  Como la combinación lineal de elementos de $base$ igual a 0 es única, $base$ es linealmente independiente, y por lo tanto es base de $V$.
+  Como la combinación lineal de elementos de $base$ igual a 0 es única, $base$ es L.I., y por lo tanto es base de $V$.
 ]
 
 #example[
@@ -818,9 +820,9 @@ $
   $
   En concreto con $lambda_1 eq x$, $lambda_2 eq y$ e $lambda_3 eq z$.
 
-  Además, $base$ es linealmente independiente pues $(1,0,0) eq.not k_1(0,1,0)$, $(1,0,0) eq.not k_2(0,0,1)$ y $(0,1,0) eq.not k_3(0,0,1)$.
+  Además, $base$ es L.I. pues $(1,0,0) eq.not k_1(0,1,0)$, $(1,0,0) eq.not k_2(0,0,1)$ y $(0,1,0) eq.not k_3(0,0,1)$.
 
-  Si $base$ no fuese linealmente independiente, por ejemplo
+  Si $base$ no fuese L.I., por ejemplo
   $
     base_1 eq {(1,0,0),(0,1,0),(0,0,1),(2,0,3)}
   $
@@ -831,14 +833,379 @@ $
   $
   Por lo que no se cumple la unicidad.
 
-  De ser linealmente independiente pero no generar el espacio vectorial, habría elementos de $V$ que no se podrían expresar como combinación lineal de elementos del conjunto, por lo que no sería base.
+  De ser L.I. pero no generar el espacio vectorial, habría elementos de $V$ que no se podrían expresar como combinación lineal de elementos del conjunto, por lo que no sería base.
 ]
 
 #proposition()[
   Son equivalentes
   + $S$ es una base de $V$,
   + $S$ es un conjunto minimal de generadores,
-  + $S$ es un conjunto maximal de vectores linealmente dependientes.
+  + $S$ es un conjunto maximal de vectores L.I.s.
 ]
+
+#dem[
+  $"1." ==> "2."$
+
+  Sabemos que $gen(S) eq V$, si existe $gen(T) eq V$ tal que $T subset S$ ¿$T eq S$?
+
+  Suponiendo que $T eq.not S then exists v in S : v in.not T$, por lo que
+  $
+    cases(reverse: #true, T subset S without {v}, gen(T) eq V) then gen(S without {v}) eq V
+  $
+  Pero $S$ es L.I., por lo que se da una contradicción.
+
+  $"2." ==> "1."$
+
+  Sabiendo que $S$ es conjunto minimal de generadores de $V$, ¿es $S$ L.I.?
+
+  Suponiendo que no lo es, $exists v in S : v in {S without {v}}$, luego
+  $
+    V eq gen(S) eq gen(S without {v})
+  $
+  Lo que se contradice con que $S$ es minimal.
+
+  $"1." ==> "3."$
+
+  Sea $T$ L.I. tal que $S subset T$ ¿$T eq S$?
+
+  Si $S subset.neq T then exists v in T : v in.not S$:
+  $
+    cases(reverse: #true, S union {v} subset T, T "L.I.") then S union {u} "L.I."
+  $
+  Pero esto contradice que $gen(S) eq V$, luego $T$ es linealmente dependiente.
+
+  $"3." ==> "1."$
+
+  Si $exists v in V : v in.not gen(S) then gen(S without {v}) eq gen(S)$, pero $S union {v}$ sería L.I., lo que contradice que $S$ sea maximal de L.I.s.
+
+  El resto de implicaciónes se deducen de las anteriores.
+]
+
+#corolary()[
+  Si $base, base'$ son bases y $base subset base'$ luego se tiene $base eq base'$
+]
+
+#v(7pt)
+
+#theorem()[
+  #footnote[Este teorema requiere asumir el Axioma de elección] Sea $V$ un K-espacio vectorial tal que $T,L subset V$ con $T$ L.I. y $gen(L) eq V$, luego
+  $
+    exists L_0 subset L : T union L_0 "es base de " V
+  $
+] <theo:bases>
+
+#ideabox()[
+  Recordemos que el Axioma de elección dice que si ${A_i}_(i in I)$ es una familia de conjuntos no vacíos disjuntos dos a dos, entonces existe un conjunto $B subset union.big_(i in I) A_i$ tal que $B inter A_i$ tiene exactamente un elemento para cada $i in I$ (es decir, se puede elegir un elemento de cada $A_i$). Alternativamente, si ${A_i}_(i in I)$ es una familia de conjuntos no vacíos, entonces $product_(i in I) A_i eq.not emptyset$.
+] <axioma-eleccion>
+
+Es equivalente el enunciado del Lema de Zorn.
+
+#ideabox()[
+  Recordemos que el Lema de Zorn dice que si $A$ es un conjunto ordenado no vacío en el que cada cadena tiene una cota superior, entonces $A$ tiene algún elemento maximal.
+] <lema-zorn>
+
+#dem()[
+  Queremeos buscar un conjunto L.I. que contenga a $T$ y este formado por verctores de $L$, para ello usaremos el lema de Zorn.
+
+  Consideremos
+  $
+    sum eq {L' subset L: T union L' "es L.I."}
+  $
+  ordenado por inclusión $(sum, subset)$. Se cumple que $emptyset in sum$ porque $T$ es L.I., luego $sum eq.not emptyset$.
+
+  Sea
+  $
+    {L'_(alpha)}_(alpha in Lambda)
+  $
+  una cadena en $sum$.
+
+  Definimos
+  $
+    L"*" eq union.big_(alpha in Lambda) L'_(alpha in Lambda)
+  $
+  Claramente $L"*" subset L$, ahora queremos probar que $T union L"*"$ es linealmente independiente.
+
+  Por reducción al absurdo, supongamos que no es L.I., entonces existe un subconjunto finito
+  $
+    T"*" subset T, quad L"*"_(f i n) subset L"*"
+  $
+  tal que
+  $
+    T"*" union L"*"_(f i n)
+  $
+  es linealmente dependiente. Pero $L"*"_(f i n)$ es finito y
+  $
+    L"*" eq union.big_(alpha) L'_(alpha)
+  $
+  por lo que existe un $beta$ tal que
+  $
+    L"*"_(f i n) subset L'_(beta)
+  $
+  (porque la familia es una cadena). Entonces
+  $
+    T"*" union L"*"_(f i n) subset T union L'_(beta)
+  $
+  luego
+  $
+    T union L'_(beta)
+  $
+  es linealmente dependiente.
+
+  Pero $L'_(beta) in sum$, así que debe ser linealmente independiente. Contradicción.
+
+  Así que $L"*"$ es cota superior de la cadena.
+
+  Como toda cadena tiene cota superior, por el lema de Zorn implica que existe
+  $
+    L_0 in sum
+  $
+  maximal, es decir que $T union L_0$ es L.I. y no se puede añadir ningún vector de $L$.
+
+  ¿$gen(T union L_0) eq V$?
+
+  Supongamos por reducción al absurdo que $T union L_0$ no genera a $V$, como $gen(L) eq V$, existe $v in L$ tal que $v in.not gen(T union L_0)$. Entonces
+  $
+    T union L_0 union {v}
+  $
+  sigue siendo linealmente independiente. Pero esto significa que
+  $
+    L_0 union {v} in sum
+  $
+  y
+  $
+    L_0 subset.neq L_0 union {v}
+  $
+  lo que contradice la maximalidad de $L_0$. Por lo tanto
+  $
+    gen(T union L_0) eq V
+  $
+  luego es base de $V$.
+]
+
+#example[
+  Sea $V eq RR^3$, tomemos
+  $
+    T eq {(2,0,0)}
+  $
+  que es un conjunto linealmente independiente.
+
+  Ahora tomemos un $L$ que sea base de $V$ (la canónica):
+  $
+    L eq {(1,0,0),(0,1,0),(0,0,1)}
+  $
+  Claramente,
+  $
+    gen(L) eq RR^3 eq V
+  $
+
+  El @theo:bases afirma que existe $L_0 subset L$ tal que $T union L_0$ es base de $V$.
+
+  Ya tenemos $T eq {(2,0,0)}$ y para formar una base de $RR^3$ necesitamos 3 vectores lienalmente independientes, luego podemos añadir, por dos vectores de $L$:
+  $
+    L_0 eq {(0,1,0),(0,0,1)}
+  $
+  Entonces
+  $
+    T union L_0 eq {(2,0,0), (0,1,0), ((0,0,1))}
+  $
+  que genera $V$ y es L.I. luego es base de $V$.
+]
+
+#ideabox()[
+  En otras palabras, el @theo:bases dice que si tienes algunos vectores independientes, siempre puedes completarlos hasta una base usando vectores de cualquier conjunto generador.
+]
+
+#corolary()[
+  Todo espacio vectorial tiene una base.
+]
+
+#dem[
+  Tomando $T eq emptyset$ que es linealmente independiente y $L eq V$ tal que $gen(L) eq V$. Por el @theo:bases existe $L_0 subset V$ tal que
+  $
+    T union L_0 eq L_0
+  $
+  es una base de $V$.
+]
+
+#corolary()[
+  Si $V$ tiene un conjunto de generadores finito, $V$ tiene una base finita
+]
+
+#corolary()[
+  Si $U$ es un subespacio de $V$, toda base de $U$ puede completarse a una base de $V$.
+]
+#dem[
+  Sea $base$ base de $U$, entonces $base$ es linealmente independiente.
+
+  Sea $gen(L) eq V$, luego
+  $
+    exists L_0 subset L : base union L_0 "es base de " V
+  $
+]
+
+#definition()[
+  Una operación elemental en el K-espacio vectorial $V$ es cualquiera de las siguientes transformaciones:
+  + $v_i arrow.l.r v_j quad (i eq.not j)$
+  + $v_i |-> lambda v_i, quad (lambda in K without {0})$
+  + $v_i arrow.l.r v_i + beta v_j quad (beta in K$, $i eq.not j)$
+]
+
+#theorem()[
+  Si $S'$ es un conjunto obtenido haciendo un número finito de operaciones elementales sobre $S subset V$, se verifica
+  $
+    gen(S) eq gen(S')
+  $
+]
+
+#dem[
+  Tenemos que demostrar que aplicando una operación elemental a un conjunto no cambia el subespacio generado, luego no lo hará si se aplica repetidamente.
+
+  1.
+
+  Para la operación intercambio de vectores
+  $
+    v_i arrow.r.l v_j quad (i eq.not j)
+  $
+  solo se reordenan los vectores del conjunto, por tanto el conjunto de combinaciones lineales posibles no cambia:
+  $
+    gen(S) eq gen(S')
+  $
+
+  2.
+
+  Para la multiplicación por un escalar no nulo
+  $
+    v_i |-> lambda v_i quad (lambda eq.not 0)
+  $
+  Sea
+  $
+    S' eq (S without {v_i}) union {lambda v_i}
+  $
+  Veamos que son iguales.
+
+  $gen(S') subset gen(S)$
+
+  Como $lambda v_i$ es una combinación lineal de $v_i in gen(S)$, entonces $lambda v_i in gen(S)$.
+
+  Luego todo vector generado por $S'$ esta en $gen(S)$.
+
+  $gen(S) subset gen(S')$
+
+  Como $lambda eq.not 0$,
+  $
+    v_i eq 1/lambda (lambda v_i)
+  $
+  Por lo tanto $v_i in gen(S')$ y cualquier combinación lineal de $S$ pertenece a $gen(S')$.
+
+  Finalmente $gen(S) eq gen(S')$.
+
+  3.
+
+  Para la suma de un múltiplo de otro vector:
+  $
+    v_i |-> v_i + beta v_j quad (i eq.not j)
+  $
+  Sea
+  $
+    S' eq (S without {v_i}) union {v_i + beta v_j}
+  $
+  Veamos que son iguales.
+
+  $gen(S') subset gen(S)$
+
+  Se cumple porque $v_i + beta v_j$ es una combinación lineal de vectores de $S$.
+
+  $gen(S) subset gen(S')$
+
+  Podemos observar  que $v_i eq (v_i + beta v_j) - beta v_j$, como los vectores del lado derecho pertenecen a $gen(S')$, se tiene
+  $
+    v_i in gen(S')
+  $
+  Por lo que cualquier combinación lineal de $S$ pertenece a $gen(S')$.
+
+  Finalmente, $gen(S) eq gen(S')$.
+
+  En conclusión, como cada operación elemental conserva el subespacio generado, si $S'$ se obtiene aplicando un número finito de estas operaciones, entonces en cada paso el subespacio generado se mantendrá igual, por lo que en general, se tendrá:
+  $
+    gen(S) eq gen(S')
+  $
+]
+
+#definition(title: "Pivote")[
+  Sea $K^n in.rev v eq (alpha_1, ..., alpha_n) eq.not 0$. Un pivote de $V$ es un $alpha_i : alpha_i eq.not 0$ y $alpha_j eq 0 quad forall j <i$
+]
+
+#definition(title: "Escalonado")[
+  El conjunto de vectores ${v_1,...,v_m} subset K^n$ esta escalonado si se cumple lo siguiente:
+  + Los vectores nulos están al final.
+  + El pivote de cada vector está a la derecha del pivote de los vectores precedentes.
+
+  Todo conjunto de vectores escalonados no nulos es linealmente independiente
+]
+
+#definition(title: "Método de Gauss- Jordan")[
+
+]
+
+#example[
+  Implementemos el método de Gauss-Jordan.
+
+  Tenemos $S eq {(2,3,4,1),(1,1,1,1),(2,3,5,0),(1,0,1,0),(1,0,3,5)}$ y queremos obtener una base del conjunto $S$. Luego:
+  $
+    mat(
+      delim: #none,
+      #text(fill: academic-colors.error)[(F_1)], 2, 3, 4, 1 #al(<start-1>) .;
+      #text(fill: academic-colors.error)[(F_2)], 1, 1, 1, 1;
+      #text(fill: academic-colors.error)[(F_3)], 2, 3, 5, 0;
+      #text(fill: academic-colors.error)[(F_4)], 1, 0, 1, 0 #al(<start-2>) .;
+      #text(fill: academic-colors.error)[(F_5)], 1, 0, 3, 5
+    )
+    #h(2cm)
+    mat(
+      delim: #none,
+      #al(<end-2>)1, 0, 1, 0;
+      1, 1, 1, 1;
+      2, 3, 5, 0;
+      #al(<end-1>) 2, 3, 4, 1;
+      1, 0, 3, 5
+    )
+    #h(.5cm)
+    mat(
+      delim: #none,
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_1$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_2 -1 F_1$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_3 - 2 F_1$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_4 - 2 F_1$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_5 - 1 F_1$], #text(fill: academic-colors.error)[$->$]
+    )
+    #h(.5cm)
+    mat(
+      delim: #none,
+      1, 0, 1, 0;
+      0, 1, 0, 1;
+      0, 3, 3, 0;
+      0, 3, 2, 1;
+      0, 0, 2, 5
+    )
+  $
+  #label-arrow(
+    <start-1>,
+    <end-1>,
+    stroke: academic-colors.error,
+    from-offset: (3pt, 3pt),
+    tip: "straight",
+    to-offset: (0pt, 3pt),
+  )
+
+  #label-arrow(
+    <start-2>,
+    <end-2>,
+    stroke: academic-colors.error,
+    from-offset: (3pt, 3pt),
+    tip: "straight",
+    to-offset: (0pt, 3pt),
+  )
+]
+
 
 

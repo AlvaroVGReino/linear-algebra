@@ -51,14 +51,18 @@
 
 #show link: text.with(fill: blue)
 
-#let dem = mathblock(
-  blocktitle: "Demostración",
-  prefix: align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Demostración.*],
-  bodyfmt: body => align(left)[#body],
+#let dem(body) = block(
+  width: 100%,
+  breakable: true,
   inset: 5pt,
-  suffix: [#align(right + bottom)[#qed()#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]]],
   radius: 5pt,
-)
+  stroke: none,
+)[
+  #align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Demostración.*]
+  #align(left)[#body]
+  #align(right + bottom)[#qed()#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]]
+  #parbreak()
+]
 
 #let solution = mathblock(
   blocktitle: "Solución",
