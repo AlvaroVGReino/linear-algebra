@@ -1154,10 +1154,10 @@ Es equivalente el enunciado del Lema de Zorn.
   $
     mat(
       delim: #none,
-      #text(fill: academic-colors.error)[(F_1)], 2, 3, 4, 1 #al(<start-1>) .;
+      #text(fill: academic-colors.error)[(F_1)], 2, 3, 4, 1 #al(<start-1>), quad;
       #text(fill: academic-colors.error)[(F_2)], 1, 1, 1, 1;
       #text(fill: academic-colors.error)[(F_3)], 2, 3, 5, 0;
-      #text(fill: academic-colors.error)[(F_4)], 1, 0, 1, 0 #al(<start-2>) .;
+      #text(fill: academic-colors.error)[(F_4)], 1, 0, 1, 0 #al(<start-2>), quad;
       #text(fill: academic-colors.error)[(F_5)], 1, 0, 3, 5
     )
     #h(2cm)
@@ -1181,19 +1181,83 @@ Es equivalente el enunciado del Lema de Zorn.
     #h(.5cm)
     mat(
       delim: #none,
+      1, 0, 1, 0, #text(fill: academic-colors.error)[$->$] ;
+      0, 1, 0, 1, #text(fill: academic-colors.error)[$->$] ;
+      0, 3, 3, 0, #text(fill: academic-colors.error)[$->$] ;
+      0, 3, 2, 1, #text(fill: academic-colors.error)[$->$] ;
+      0, 0, 2, 5, #text(fill: academic-colors.error)[$->$]
+    ) \
+    mat(
+      delim: #none,
+      #text(fill: academic-colors.error)[$F_1$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$F_2$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$F_3 - 3 F_2$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$F_4 - 3 F_2$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$F_5$], #text(fill: academic-colors.error)[$->$]
+    )
+    #h(.5cm)
+    mat(
+      delim: #none,
       1, 0, 1, 0;
       0, 1, 0, 1;
-      0, 3, 3, 0;
-      0, 3, 2, 1;
+      0, 0, 3, -3;
+      0, 0, 2, -2;
       0, 0, 2, 5
     )
+    #h(.5cm)
+    mat(
+      delim: #none,
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_1$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_2$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_3 div 3$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_4$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$->$], #text(fill: academic-colors.error)[$F_5$], #text(fill: academic-colors.error)[$->$]
+    )
+    #h(.5cm)
+    mat(
+      delim: #none,
+      1, 0, 1, 0, #text(fill: academic-colors.error)[$->$] ;
+      0, 1, 0, 1, #text(fill: academic-colors.error)[$->$] ;
+      0, 0, 1, -1, #text(fill: academic-colors.error)[$->$] ;
+      0, 0, 2, -2, #text(fill: academic-colors.error)[$->$] ;
+      0, 0, 2, 5, #text(fill: academic-colors.error)[$->$]
+    ) \
+    mat(
+      delim: #none,
+      #text(fill: academic-colors.error)[$F_1$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$F_2$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$F_3$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$F_4 - 2 F_3$], #text(fill: academic-colors.error)[$->$] ;
+      #text(fill: academic-colors.error)[$F_5 - 2 F_3$], #text(fill: academic-colors.error)[$->$]
+    )
+    #h(.5cm)
+    mat(
+      delim: #none,
+      1, 0, 1, 0;
+      0, 1, 0, 1;
+      0, 0, 1, -1;
+      0, 0, 0, 0 #al(<start-3>), quad;
+      0, 0, 0, 3 #al(<start-4>)
+    )
+    #h(2cm)
+    mat(
+      delim: #none,
+      1, 0, 1, 0;
+      0, 1, 0, 1;
+      0, 0, 1, -1;
+      #al(<end-4>) 0, 0, 0, 3, quad;
+      #al(<end-3>) #text(fill: academic-colors.neutral-dark.lighten(50%))[0], #text(fill: academic-colors.neutral-dark.lighten(50%))[0], #text(fill: academic-colors.neutral-dark.lighten(50%))[0], #text(fill: academic-colors.neutral-dark.lighten(50%))[0]
+    )
   $
+
+  Por lo que la base obtenida es $gen(S') eq {(1,0,1,0), (0,1,0,1), (0,0,1,-1), (0,0,0,3)}$
+
   #label-arrow(
     <start-1>,
     <end-1>,
     stroke: academic-colors.error,
+    tip: (dash: "dashed"),
     from-offset: (3pt, 3pt),
-    tip: "straight",
     to-offset: (0pt, 3pt),
   )
 
@@ -1205,6 +1269,35 @@ Es equivalente el enunciado del Lema de Zorn.
     tip: "straight",
     to-offset: (0pt, 3pt),
   )
+  #label-arrow(
+    <start-3>,
+    <end-3>,
+    stroke: academic-colors.error,
+    from-offset: (3pt, 3pt),
+    tip: "straight",
+    to-offset: (0pt, 3pt),
+  )
+
+  #label-arrow(
+    <start-4>,
+    <end-4>,
+    stroke: academic-colors.error,
+    from-offset: (3pt, 3pt),
+    tip: "straight",
+    to-offset: (0pt, 3pt),
+  )
+
+  #place(right, dx: -95pt, dy: -33.5pt)[
+    #figure(
+      kind: "Figura",
+      supplement: [*Figura*],
+      cetz.canvas({
+        import cetz.draw: *
+        set-style(stroke: (paint: academic-colors.error, thickness: 1pt))
+        line((0, 0), (2, 0), stroke: (dash: "dashed"))
+      }),
+    )
+  ]
 ]
 
 
