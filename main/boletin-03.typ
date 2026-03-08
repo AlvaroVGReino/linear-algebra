@@ -8,7 +8,7 @@
 = Boletín 3
 
 #exercise()[
-  Estudia cuales de las siguientes aplicaciones $f:RR^3 -> RR^3$ son lineales:
+  Estudia cuales de las siguientes aplicaciones $f:RR^3 to RR^3$ son lineales:
   $
     & #text[(a) ] f(x,y,z) eq (x,1,z),             &   #text[(b) ] f(x,y,z) eq (y,z,0), \
     & #text[(c) ] f(x,y,z) eq (2x,y,3y), quad quad & #text[(d) ] f(x,y,z) eq (x-1,x,y).
@@ -45,7 +45,7 @@
 ]
 
 #exercise()[
-  Estudia si la aplicación $f:RR^3 -> RR^3$ definifa por $f(x,y,z) eq (0,x-y,y)$ es lineal y en caso afirmativo estudia $#Ker[f]$ y $#Im[f]$.
+  Estudia si la aplicación $f:RR^3 to RR^3$ definifa por $f(x,y,z) eq (0,x-y,y)$ es lineal y en caso afirmativo estudia $ker (f)$ y $im (f)$.
 
   #solution()[
 
@@ -53,7 +53,7 @@
 ]
 
 #exercise()[
-  Sea $f: RR_3[X] -> RR_3[X]$ tal que $f(p(X)) eq p'(X)$ (polinomio derivado). a) Prueba que $f$ es lineal. b) Calcula $f^(-1)(6X^2-5X+4)$. c) Calcula $#Ker[$f$]$ e $#Im[$f$]$.
+  Sea $f: RR_3[X] to RR_3[X]$ tal que $f(p(X)) eq p'(X)$ (polinomio derivado). a) Prueba que $f$ es lineal. b) Calcula $f^(-1)(6X^2-5X+4)$. c) Calcula $ker (f)$ e $im (f)$.
   #solution()[
 
   ]
@@ -67,7 +67,7 @@
 ]
 
 #exercise()[
-  Sea $f: RR^3 -> RR^3$ la aplicación lineal definida por $f(1,0,0) eq (2,1,0)$, $f(0,1,0) eq (1,0,0)$ y $f(0,0,1) eq (3,1,0)$. Calcula #Ker[f] y #Im[f]. Estudia si $f$ es inyectiva o sobreyectiva.
+  Sea $f: RR^3 to RR^3$ la aplicación lineal definida por $f(1,0,0) eq (2,1,0)$, $f(0,1,0) eq (1,0,0)$ y $f(0,0,1) eq (3,1,0)$. Calcula ker (f) y im (f). Estudia si $f$ es inyectiva o sobreyectiva.
   #solution()[
 
   ]
@@ -75,8 +75,8 @@
 
 #exercise()[
   En $RR_2[X]$ se considera el subespacio $U eq {a+b X^2 : a,b in RR}$.
-  + Encuentra $S,S' subset U$ tales que $S eq.not S'$ y $#c[$S$] eq #c[$S'$] eq U$.
-  + Prueba que $#c[$2x + U$] eq RR_2[X] slash U$.
+  + Encuentra $S,S' subset U$ tales que $S eq.not S'$ y $gen(S) eq gen(S') eq U$.
+  + Prueba que $gen(2x + U) eq RR_2[X] slash U$.
   #solution[
 
   ]

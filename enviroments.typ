@@ -25,11 +25,11 @@
 )
 #let qed(sym: sym.square) = block(align(bottom + right)[#scale(x: 150%, y: 150%)[#sym]])
 
-#let c(body) = block($chevron.l #body chevron.r$)
+#let gen(a) = $chevron.l #a chevron.r$
 
-#let Im(body) = block(text()[Im(#body)])
+#let im = "Im"
 
-#let Ker(body) = block(text()[Ker(#body)])
+#let ker = "Ker"
 
 #let Ctl(sym: sym.corner.t.l) = block(align(top + left)[#scale(x: 150%, y: 150%)[#sym]])
 
@@ -37,21 +37,32 @@
 
 #let q(qed) = align(right + bottom)[#qed()]
 
+#let quot(a, b) = $#a slash #b$
+
+#let iso = $tilde.equiv$
+
+#let to = $-->$
+
+#let then = $=>$
+
+#let dim = "dim"
+
+#let base = $cal(B)$
+
 #show link: text.with(fill: blue)
 
 #let dem = mathblock(
   blocktitle: "Demostración",
-  prefix: align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] _Demostración._],
+  prefix: align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Demostración.*],
   bodyfmt: body => align(left)[#body],
   inset: 5pt,
-  breakable: true,
   suffix: [#align(right + bottom)[#qed()#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]]],
   radius: 5pt,
 )
 
 #let solution = mathblock(
   blocktitle: "Solución",
-  prefix: align(top + left)[#text(fill: academic-colors.accent.lighten(50%))[#Ctl()] _Solución._],
+  prefix: align(top + left)[#text(fill: academic-colors.accent.lighten(50%))[#Ctl()] *Solución.*],
   inset: 10pt,
   bodyfmt: body => align(left)[#text(fill: academic-colors.neutral-dark.lighten(10%))[#body]],
   suffix: align(right + bottom)[#qed()#text(fill: academic-colors.accent.lighten(50%))[#Cbr()]],
@@ -61,10 +72,11 @@
 
 #let remark = mathblock(
   blocktitle: "Observación",
-  prefix: align(left)[_*Observación.*_],
+  prefix: align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Observación.*],
   titlix: title => align(left)[#title],
   bodyfmt: body => align(left)[#body],
   inset: 5pt,
+  suffix: align(right + bottom)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]],
   radius: 5pt,
 )
 

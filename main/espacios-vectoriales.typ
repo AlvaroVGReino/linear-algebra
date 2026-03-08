@@ -1,6 +1,7 @@
 #import "/metadata.typ": *
 #import "@preview/clean-cnam-template:1.6.2": *
 #import "/enviroments.typ": *
+#import "@preview/cetz:0.4.2"
 
 #set footnote(numbering: "*")
 
@@ -65,7 +66,7 @@
 #ideabox()[
   Si $V$ es espacio vectorial sobre $K$ y $A$ es un conjunto:
   $
-    V^A eq {f:A -> V : f #text()[es aplicación]}
+    V^A eq {f:A to V : f #text()[es aplicación]}
   $
 ]
 
@@ -121,15 +122,17 @@
     "$<==$"$quad$ La demostración es trivial para ambos casos.
 ]
 
+#remark()[
+  Sean ${U_i}_(i in I)$ una familia de subespacios de $V$, entonces
+  $
+    forall i in I, quad inter.big_(i in I)U_i quad #text()[es un subespacio]
+  $
+  pero
+  $
+    union.big_(i in I)U_i quad #text()[no tiene porque ser un subespacio]
+  $
+]
 
-Sean ${U_i}_(i in I)$ una familia de subespacios de $V$, entonces
-$
-  forall i in I, quad inter.big_(i in I)U_i quad #text()[es un subespacio]
-$
-pero
-$
-  union.big_(i in I)U_i quad #text()[no tiene porque ser un subespacio]
-$
 
 #definition(title: "Subespacio generado")[
   Sea $S subset V$, se llama subespacio generado por $S$ o $chevron.l S chevron.r$ al menor subespacio de $V$ que contiene a $S$
@@ -175,30 +178,30 @@ $
       chevron.l S' chevron.r subset chevron.l S chevron.r
     )
     => cases(
-      S subset #c[$S'$],
+      S subset gen(S'),
       quad and,
-      S' subset #c[$S$]
+      S' subset gen(S)
     )
   $
   Particularmente , si $S subset V$ y $v,w in V$, $w in S$, se verifica
   $
-    #c[$S$] eq #c[$S union {w}$] <==> v in S
+    gen(S) eq gen(S union {w}) <==> v in S
   $
   idem
   $
-    #c[$S$] eq #c[$S without {w}$] <==> w in #c[$S without {w}$]
+    gen(S) eq gen(S without {w}) <==> w in gen(S without {w})
   $
   generalmete, $0 in S$, así
   $
-    #c[$S$] eq #c[$S without {0}$].
+    gen(S) eq gen(S without {0}).
   $
   - Si $U, W <= V$, $quad W + U$ es el menor subespacio de $V$ que contiene a $U$ y $W$, por lo tanto
   $
-    U + W = #c[$U union W$].
+    U + W = gen(U union W).
   $
-  - Sin $U eq #c[$S$]$ y $W eq #c[$T$] <= V$, entonces
+  - Sin $U eq gen(S)$ y $W eq gen(T) <= V$, entonces
   $
-    U + W eq #c[$S union T$].
+    U + W eq gen(S union T).
   $
 ]
 
@@ -234,7 +237,7 @@ $
   $
 ]
 #definition()[
-  Sean $V$ y $V'$ K-espacios vectoriales. Se dice que la aplicación $f:V -> V'$ es un aaplicación lineal si se verifica:
+  Sean $V$ y $V'$ K-espacios vectoriales. Se dice que la aplicación $f:V to V'$ es un aaplicación lineal si se verifica:
   1. $
       f(u+v) eq f(u) + f(v)
     $
@@ -245,7 +248,7 @@ $
 ]
 
 #example()[
-  - Para cualquier espacio vectorial existe la identidad:$ id_V:V ->V', quad id_V (v)=v, quad forall v in V $
+  - Para cualquier espacio vectorial existe la identidad:$ id_V:V to V', quad id_V (v)=v, quad forall v in V $
   que es lineal.
   - Para $f,g$ aplicaciones lineales talque que existe $g compose f$, entonces la composición es lineal.
 ]
@@ -261,8 +264,8 @@ $
 ]
 
 #proposition()[
-  Sea $f: V -> V'$ es un aplicación lineal
-  1. Si $U$ es un subespacio de $V$, entonces $f(U) eq {f(u) : u in U}$ es un subespacio de $V'$. Tambien, si $U eq #c[$S$]$, se cumple $f(U) eq #c[$f(S)$]$.
+  Sea $f: V to V'$ es un aplicación lineal
+  1. Si $U$ es un subespacio de $V$, entonces $f(U) eq {f(u) : u in U}$ es un subespacio de $V'$. Tambien, si $U eq gen(S)$, se cumple $f(U) eq gen(f(S))$.
   2. Si $W$ es un subespacio de $V'$, entonces $f^(-1)(W)$ es subespacio de $V$.
 
 
@@ -278,39 +281,39 @@ $
 ]
 
 #definition()[
-  Sea $f: V ->V'$ una apliación lineal.
+  Sea $f: V to V'$ una apliación lineal.
 
-  Se llama imagen de $f$, y se denota por $#Im[f]$, al subespacio $f(V)$ de $V'$, es decir,
+  Se llama imagen de $f$, y se denota por $im (f)$, al subespacio $f(V)$ de $V'$, es decir,
   $
-    #Im[f] eq.def {f(v):v in V}
+    im (f) eq.def {f(v):v in V}
   $
 
-  Se llama núcleo o Kernel de $f$, y se denota por $#Ker[f]$, al subespacio $f^(-1)({0}) subset V$, es decir,
+  Se llama núcleo o Kernel de $f$, y se denota por $ker(f)$, al subespacio $f^(-1)({0}) subset V$, es decir,
   $
-    #Ker[f] eq.def {v in V : f(v) eq 0}
+    ker(f) eq.def {v in V : f(v) eq 0}
   $
 ]
 
 #proposition()[
-  Sea $f: V -> V'$ una aplicación lineal.
-  1. $f$ es inyectiva $<==> #Ker[f] eq 0$
-  2. $f$ es sobreyectiva $<==> #Im[f] eq V'$
+  Sea $f: V to V'$ una aplicación lineal.
+  1. $f$ es inyectiva $<==> ker(f) eq 0$
+  2. $f$ es sobreyectiva $<==> im (f) eq V'$
 ]
 
 #dem()[
-  1. "$==>$" $quad$ Si $v in #Ker[f]$, $f(v) eq 0$. Como es lineal, $f(0) eq 0$ y $f$ es inyectiva, se debe tener que $v eq 0$ y $#Ker[f] eq {0}$
+  1. "$==>$" $quad$ Si $v in ker(f)$, $f(v) eq 0$. Como es lineal, $f(0) eq 0$ y $f$ es inyectiva, se debe tener que $v eq 0$ y $ker(f) eq {0}$
 
-  "$<==$"$quad$ Sean $u,v in V$ tales que $f(u) eq f(v)$, es decir, $f(u-v) eq 0$ o, equivalentemente, $u-v in #Ker[f]$, por lo que $u eq v$, y en consecuencia $f$ es inyectiva.
+  "$<==$"$quad$ Sean $u,v in V$ tales que $f(u) eq f(v)$, es decir, $f(u-v) eq 0$ o, equivalentemente, $u-v in ker(f)$, por lo que $u eq v$, y en consecuencia $f$ es inyectiva.
 
   2. Es trivial.
 ]
 
 #definition(title: "Isomorfismo")[
-  Una aplicación lineal $f: V --> V'$ se dice que es un isomorfismo cuando es biyectiva. Si además $V eq V'$ se dice que es un automorfismo de $V$.
+  Una aplicación lineal $f: V to V'$ se dice que es un isomorfismo cuando es biyectiva. Si además $V eq V'$ se dice que es un automorfismo de $V$.
 ]
 
 #ideabox()[
-  $V$ y $V'$ son isomorfos ($V tilde.equiv V'$) si existe $f: V -> V'$ isomorfismo
+  $V$ y $V'$ son isomorfos ($V iso V'$) si existe $f: V to V'$ isomorfismo
 ]
 
 #remark()[
@@ -318,8 +321,8 @@ $
   $
     cases(
       reverse: #true,
-      V tilde.equiv v',
-      f : V --> V' #text()[linear]
+      V iso v',
+      f : V to V' #text()[linear]
     ) arrow.double.not f #text[isomorfismo]
   $
 ]
@@ -343,19 +346,89 @@ $
   Al conjunto de clases de se le denota $U slash V$
 ]
 
+#example()[
+  Este concepto se puede interpretar como una laminación infinita del espacio $V$ mediante translaciones del subespacio $U$. Si consideramos el $RR$-espacio vectorial $V eq RR^2$ y el subespacio $U eq {(x,0):x in RR}$, el subespacio $U$ correspondería con el eje de abcisas en $RR^2$, luego cada una de las clases de equivalencia como se define mediante:
+  $
+    x ~ y : <=> x-y in U
+  $
+  Es decir, cada clase contiene todos los vectores que difieren de $x$ en algo que esta dentro de $U$.
+
+  - Por lo tanto, una clase de equivalencia es $U$ mismo (la del 0).
+
+  - Las demás son translaciones de $U$ por vectores de $V$
+
+  Luego $V$ sería laminado en todas las rectas horizontales del plano, pues para cualquier $x eq (a,b)$ e $y eq (c,d)$, para que $(a,b)-(c,d) in U$, necesariamente $b-d eq 0 => b eq d$.
+
+  Por lo que cada $b in RR$ tal que ${(x,b) : x in RR}$ tendrá u propia clase de equivalencia que translada la recta horizontalcon altura $b$.
+
+  #place(right, dx: 0pt, dy: -4pt)[
+    #figure(
+      kind: "Figura",
+      supplement: [*Figura*],
+      cetz.canvas({
+        import cetz.draw: *
+        scale(y: 75%, x: 75%)
+        grid(
+          (-4, -2),
+          (4, 4),
+          help-lines: true,
+          name: "V",
+        )
+        set-style(mark: (symbol: ")>"))
+        content((-3.5, 4.5))[
+          $V eq RR^2$
+        ]
+        // Ejes
+        line((-4, 0), (4, 0))
+        line((0, -2), (0, 4))
+
+        // Subespacio W
+        stroke(academic-colors.secondary)
+        line((-4, 0), (4, 0), name: "U")
+        content((5.3, 0))[
+          #text(fill: academic-colors.secondary)[$U => b eq 0$]
+        ]
+
+        // Cosets
+        stroke(academic-colors.neutral-dark.lighten(50%))
+        line((-4, 1), (4, 1))
+        content((4.8, 1))[$b eq 1$]
+        line((-4, 3.14), (4, 3.14))
+        content((4.8, 3.14))[$b eq pi$]
+        line((-4, 2), (4, 2))
+        content((4.8, 2))[$b eq 2$]
+        line((-4, -1.41), (4, -1.41))
+        content((5.1, -1.41))[$b eq -sqrt(2)$]
+
+        // Punto representante
+        fill(blue)
+        circle((1, 2), radius: 0.08)
+      }),
+      caption: [Representación gráfica de las \ clases de equivalencia de $V slash U$],
+    )
+  ]
+  - $b eq 0 quad to$ el propio subespacio $U$,
+  - $b eq 1 quad to$ otra recta,
+  - $b eq 2 quad to$ otra,
+  - $b eq pi quad to$ otra,
+  - etc.
+  #v(4cm)
+
+
+] <exa:cocient.set>
+
+
 #proposition()[
-  $V slash U$ es espacio vectorial.
+  $V slash U$ es espacio vectorial, para todo $v + U in V slash U$, se tiene
   $
-    forall v + U, quad v' + U in V slash U quad (v+U)+(v' + U) eq v + v' +U \
-    forall lambda in K, lambda(v + U) eq lambda v + U.
+    forall v' in V, quad v' + U in V slash U quad (v+U)+(v' + U) eq v + v' +U \
+    forall lambda in K, quad lambda(v + U) eq lambda v + U.
   $
-
-
 ]
 #dem()[
   Sea
   $
-    V slash U times V slash U --> V slash U \
+    V slash U times V slash U to V slash U \
     (v+U,v' +U) ~~> v + v' + U
   $
   luego
@@ -378,25 +451,37 @@ $
 #definition()[
   La aplicación de paso al cociente
   $
-    pi:V -->V slash U \
+    pi:V to V slash U \
     v ~~> v+U
   $
   es lineal y sobreyectiva. Entonces,
   $
-    #Ker[$pi$] eq {v in V : pi(v) eq [0]} eq {v in V : v + U eq 0} eq U
+    ker(pi) eq {v in V : pi(v) eq [0]} eq {v in V : v + U eq 0} eq U
   $
 ]
 
+#ideabox[
+  Retomando el @exa:cocient.set, se puede apreciar fácilmente de qué manera la ausencia de translación del subespacio $U$ es el propio subespacio, por eso este coincide con el $ker(pi)$.
+
+  Dicho de otra manera, los únicos vectores de $V$ que difieren 0 de $U$ son los que pertenecen a $U$.
+]
+
 #proposition()[
-  Sea $f:V --> V'$ una aplicación lineal,
+  Sea $f:V to V'$ una aplicación lineal,
   $
     v ~_f u <=> f(v) eq f(u) <=> f(v) - f(u) eq 0 <=> f(v-u) eq 0 <=>\
-    <=> v-u in #Ker[f] <=> v ~_(#Ker[f]) u
+    <=> v-u in ker(f) <=> v ~_(ker(f)) u
   $
   luego
   $
-    V slash ~_f quad eq quad V slash #Ker[f]
+    V slash ~_f quad eq quad V slash ker(f)
   $
+]
+
+#ideabox()[
+  Como dos elementos estan relacionados si y solo si sus imagenes son iguales, entonces cada clase de equivalencia de $V slash ~_f$ se corresponde con los elementos de $V$ que tienen la misma imagen, es decir, con los elementos de $V$ que difieren en algo que esta dentro del $ker(f)$.
+
+  Por lo tanto, cada clase de equvalencia de $V slash ~_f$ es una translación del subespacio $ker(f)$ y, finalmente, $V slash ~_f eq V slash ker(f)$.
 ]
 
 #proposition()[
@@ -411,8 +496,8 @@ $
   $
   equivalentemente,
   $
-    V -->^(f_1) V slash #Ker[f] -->^(f_2) f(V) -->^(f_3) V' \
-    v ~~> v + #Ker[f] ~~> f(v) ~~> f(v)
+    V to^(f_1) V slash ker(f) to^(f_2) f(V) to^(f_3) V' \
+    v ~~> v + ker(f) ~~> f(v) ~~> f(v)
   $
 ]
 
@@ -423,16 +508,14 @@ $
 #proposition()[
   Sean $U, W$ subespacios vectoriales de un K-espacio vectorial V tales que $U subset W$. Entonces,
   $
-    (V slash U)/(W slash U) tilde.equiv V slash W
+    (V slash U)/(W slash U) iso V slash W
   $
-
-
 ]
 
 #dem()[
   Sea
   $
-    V slash U & -->^(f) V slash W \
+    V slash U & to^(f) V slash W \
         v + U & ~~> f(v + U) eq v + W
   $
   Si $v+U eq v' + U$, $quad v+W eq.quest v' + W$, veamos
@@ -464,31 +547,83 @@ $
   Para demostrarlo, veremos si es sobreyectiva y inyectiva.
   ¿Es $f$ sobreyectiva?
   $
-    forall v+W in V slash W, quad exists v + U in V slash U : f(v+U) eq v+ W => #Im[f] eq V slash W
+    forall v+W in V slash W, quad exists v + U in V slash U : f(v+U) eq v+ W => im (f) eq V slash W
   $
   Luego sí lo es.
 
   ¿Es $f$ inyectiva?
   $
-    #Ker[f] eq {v+U in V slash U : f(v + U) eq 0} eq {v+U in V slash U : v+W eq 0} \
+    ker(f) eq {v+U in V slash U : f(v + U) eq 0} eq {v+U in V slash U : v+W eq 0} \
     eq {v+U in V slash U :v in W} eq W slash U
   $
   Luego por el primer Teorema de Isomorfía
   $
-    (V slash U)/(#Ker[f]) eq (V slash U)/(W slash U) tilde.equiv V slash W
+    (V slash U)/(ker(f)) eq (V slash U)/(W slash U) iso V slash W
   $
 ]
+
 #ideabox()[
-  Recordemos que el primer Teorema de Isomorfía decía que siendo $f:A --> B$ isomorfismo, se cumple
+  Recordemos que el primer Teorema de Isomorfía decía que siendo $f:A to B$ isomorfismo, se cumple
   $
-    A slash #Ker[f] tilde.equiv B
+    A slash ker(f) iso B
   $
 ]
+
+#example()[
+  Sea $V = RR^3$ y consideremos los subespacios
+  $
+    W = {(x,y,0) : x,y in RR}, \
+    U = {(x,0,0) : x in RR}.
+  $
+
+  Entonces se tiene claramente que $U subset W subset V$.
+
+  Al cocientar $V$ por $U$, dos vectores son equivalentes si difieren en un
+  vector de la forma $(x,0,0)$. Por tanto cada clase de $V slash U$ tiene un
+  representante de la forma $(0,y,z)$, y las clases quedan determinadas por
+  el par $(y,z)$. Así,
+
+  $
+    V slash U iso RR^2.
+  $
+
+  Consideremos ahora $W slash U$. Sus elementos son clases de vectores de $W$:
+  $
+    (x,y,0) + U = (0,y,0) + U.
+  $
+
+  Por lo tanto, bajo la identificación anterior,
+
+  $
+    W slash U = {(y,0) : y in RR} subset RR^2,
+  $
+
+  que corresponde al subespacio generado por el eje $y$.
+
+  Al formar el cociente $(V slash U)/(W slash U)$, se identifican los pares $(y,z)$ que difieren en un vector de la forma $(y,0)$, por lo que las clases quedan determinadas únicamente por la coordenada $z$. En consecuencia,
+
+  $
+    (V slash U)/(W slash U) iso RR.
+  $
+
+  Por otra parte, al cocientar $V = RR^3$ por el plano $W$ (el plano $x y$),
+  sólo queda la dirección del eje $z$, por lo que
+
+  $
+    V slash W iso RR.
+  $
+
+  Así se verifica en este caso que
+  $
+    (V slash U)/(W slash U) iso V slash W.
+  $
+]
+
 
 #theorem()[
   Sean $U_1$ y $U_2$ subespacios del K-espacio vectorial $V$, se tiene
   $
-    (U_1 + U_2)/(U_1) tilde.equiv (U_2)/(U_1 inter U_2)
+    (U_1 + U_2)/(U_1) iso (U_2)/(U_1 inter U_2)
   $
 
 
@@ -497,11 +632,11 @@ $
 #dem()[
   Sea la siguiente descomposición
   $
-    U_2 arrow.hook_(i) U_2 + U_1 -->_(pi) (U_1 +U_2)/U_1
+    U_2 arrow.hook_(i) U_2 + U_1 to_(pi) (U_1 +U_2)/U_1
   $
-  tal que $pi compose i eq f$. Luego $f$ es lineal por ser composiciónde lineales.
+  tal que $pi compose i eq f$. Luego $f$ es lineal por ser composición de lineales.
   $
-    #Ker[f] eq {u in U_2 : f(u) eq 0} eq {u in U_2 : u+U_1 eq 0} eq \
+    ker(f) eq {u in U_2 : f(u) eq 0} eq {u in U_2 : u+U_1 eq 0} eq \
     eq {u in U_2 : u+U_1 eq U_1} eq {u in U_2 : u in U_1} eq U_1 inter U_2
   $
   $f$ es sobreyectiva pues
@@ -515,11 +650,15 @@ $
   $
   Por lo tanto,
   $
-    #Im[f] eq (U_1 + U_2)/U_1
+    im (f) eq (U_1 + U_2)/U_1
   $
   Y, finalmente, por el primer Teorema de la Isomorfía:
   $
-    (U_1 + U_2)/(U_1) tilde.equiv (U_2)/(U_1 inter U_2)
+    quot(U_2, ker(f)) iso im(f)
+  $
+  Sustituyendo:
+  $
+    (U_2)/(U_1 inter U_2) iso (U_1 + U_2)/(U_1)
   $
 ]
 
@@ -534,11 +673,18 @@ $
   $S$ es linealmente independiente si existe $sum lambda_i s_i eq 0, lambda_i in K, s_i in S, lambda_i eq 0 quad forall forall #footnote()[La notación "$forall forall$" significa "para casi todo". Referido a que existe una cantidad finita de elementos que no cumplen la condición] i in I quad (#text[con algún $lambda_i eq.not 0$])$
 ]
 
+#ideabox()[
+  $S$ será linealmente dependiente si existen por lo menos dos vectores $v_1, v_2 in S$ tales que:
+  $
+    v_1 eq lambda v_2 quad (lambda in K)
+  $
+]
+
 #example()[
   + El vector 0 es linealmente dependiente, pues $1·0 eq 0$ pero $1 eq 0$ no se cumple.
   + $0 in S => S$ linealmente dependiente.
   + Para $S eq {v}$ es linealmente independiente $<==> v eq.not 0$
-  + Sea $S eq {v_1, .. , v_n}, n>=2$, es linealmente dependiente $<==> exists v_i in S : v_i in #c[$S without {v_i}$]$ y en tal caso se da que $#c[$S$] eq #c[$S without {v_i}$]$. Por lo que $v_i$ es "redundante".
+  + Sea $S eq {v_1, .. , v_n}, n>=2$, es linealmente dependiente $<==> exists v_i in S : v_i in gen(S without {v_i})$ y en tal caso se da que $gen(S) eq gen(S without {v_i})$. Por lo que $v_i$ es "redundante".
   #dem[
     4. "$==>$"
     Supongamos que $S eq {v_1,..,v_n}$ linealmente dependiente, esto significa que
@@ -552,7 +698,7 @@ $
     $
       exists lambda_j^(-1) in K => lambda_j^(-1)(lambda_1 v_1 + ... + lambda_n v_n) eq lambda_j^(-1)·0 eq 0 <==> \
       <==>lambda_j^(-1)lambda_1 v_1 + ... + lambda_j^(-1) lambda_n v_n eq 0 <==> \
-      <==> v_j eq -(lambda_j^(-1)lambda_1 v_1 + ... + lambda_j^(-1) lambda_n v_n) => v_j in #c[$S without {v_j}$]
+      <==> v_j eq -(lambda_j^(-1)lambda_1 v_1 + ... + lambda_j^(-1) lambda_n v_n) => v_j in gen(S without {v_j})
     $
 
     "$<==$"
@@ -581,20 +727,118 @@ $
 
     ¿Es ${v_1+v_2+v_3,v_1-v_3,v_2-2v_3}$ linealmente independiente?
     $
-      lambda(v_1+v_2+v_3) + mu(v_1-v_3) + xi(v_2-2v_3) eq 0
+      lambda(v_1+v_2+v_3) + mu(v_1-v_3) + xi(v_2-2v_3) eq 0 then \
+      then lambda v_1 + lambda v_2 + lambda v_3 + mu v_1 - mu v_3 + xi v_2 - 2 xi v_3 eq 0 then \
+      then lambda v_1 + mu v_1 + lambda v_2 + xi v_2 + lambda v_3 - mu v_3 -2 xi v_3 eq 0
     $
-    Luego es linealmente independiente $<==> lambda eq mu eq xi eq 0$
-
     luego
     $
       (lambda + mu)v_1 + (lambda + xi)v_3 + (lambda-mu-2xi)v_3 eq 0 ==> cases(
         lambda + mu eq 0,
         lambda + xi eq 0,
-        lambda - mu- 2xi eq 0
+        lambda - mu- 2xi eq 0.
       )
     $
+    Resolviendo
+    $
+      mu eq - lambda, quad xi eq - lambda
+    $
+    Sustituyendo en la tercera:
+    $
+      lambda - (- lambda) -2(- lambda) eq 0 then \
+      lambda + lambda + 2 lambda eq 4 lambda eq 0 then lambda eq 0 then mu eq xi eq 0
+    $
+    Por lo que la única solución posible es
+    $
+      lambda eq mu eq xi eq 0
+    $
+    y es linealmente independiente.
+
   +
     En $RR[X]$, ${1}$ es linealmente independiente y ${1,2}$ no lo es.
+]
+
+#definition()[
+  Sea $V$ un K-espacio vectorial y $S subset V$. Diremos que $S$ es una base de $V$ si y solo si:
+  - $S$ es linealmente independiente,
+  - $gen(S) eq V$.
+  Generalmente, se denotará por $base$.
+]
+
+#proposition()[
+  $
+    base eq {v_1, ..., v_n} #text[es base de ] V <=> \
+    forall v in V, quad exists ! lambda_1,...,lambda_n in K : quad v eq lambda_1 v_1 + ... + lambda_n v_n
+  $
+]
+
+#ideabox()[
+  Esto quiere decir que para cada elemento de $V$, solo existe una única forma de ser representado por combinacions lineales de la base.
+]
+
+#dem[
+  "$==>$"
+
+  _Existencia_
+
+  Supongamos que $base$ base de $V$, luego $gen(base) eq V$ y
+  $
+    cases(
+      reverse: #true, v in V,
+      gen(base) eq V
+    ) then exists quad cases(reverse: #true, lambda_1"," ..."," lambda_n in K, v_1","...","v_n in base) : v eq sum_(i eq 1)^n lambda_i v_i
+  $
+  _Unicidad_
+
+  Si existe $v eq sum_(i eq 1)^n lambda_i v_i eq sum_(i eq 1)^n mu_i v_i$ se tiene
+  $
+    sum_(i eq 1)^n lambda_i v_i - sum_(i eq 1)^n mu_i v_i eq 0 then (lambda_1 - mu_1)v_1 +...+ (lambda_n - mu_n)v_n eq 0
+  $
+  Pero como $base$ es linealmente independiete
+  $
+    lambda_1 - mu_1 eq ... eq lambda_n - mu_n eq 0 then lambda_i eq mu_i quad forall i in I
+  $
+  "$<==$"
+
+  Supongamos que $forall v in V$
+  $
+    exists ! lambda_1,...,lambda_n in K : sum_(i eq 1)^n lambda_i v_i, quad v_i in base
+  $
+  Por definición $V subset gen(base)$. También es claro que $gen(base) subset V$, pues $base subset V$ y $V$ es un K-espacio vectorial. Por lo tanto $gen(base) eq V$.
+
+  Como la combinación lineal de elementos de $base$ igual a 0 es única, $base$ es linealmente independiente, y por lo tanto es base de $V$.
+]
+
+#example[
+  La proposición sobre la unicidad en la base se aprecia fácilmente en $RR^3$ sobre la base canónica, es decir $base eq {e_1,e_2,e_3} eq {(1,0,0),(0,1,0),(0,0,1)}$.
+
+  Esta es base pues para todo elemento $v eq (x,y,z)$ de $RR^3$ se puede expresar de forma única mediante la combinación lineal de los elementode $base$:
+  $
+    (x,y,z) eq sum_(i=1)^3 lambda_i e_i eq lambda_1 (1,0,0) + lambda_2 (0,1,0) + lambda_3(0,0,1)
+  $
+  En concreto con $lambda_1 eq x$, $lambda_2 eq y$ e $lambda_3 eq z$.
+
+  Además, $base$ es linealmente independiente pues $(1,0,0) eq.not k_1(0,1,0)$, $(1,0,0) eq.not k_2(0,0,1)$ y $(0,1,0) eq.not k_3(0,0,1)$.
+
+  Si $base$ no fuese linealmente independiente, por ejemplo
+  $
+    base_1 eq {(1,0,0),(0,1,0),(0,0,1),(2,0,3)}
+  $
+  que es linealmente dependiente porque $(2,0,3) eq 2(1,0,0) + 3(0,0,1)$. Aquí se cumple que $gen(base_1) eq RR^3$ pero existen elemento que se pueden expresar de más de una manera, por ejemplo $(4,3,8) in RR^3$:
+  $
+    4(1,0,0) + 3(0,1,0) + 8(0,0,1) + 0(3,0,3) eq (4,3,8) \
+    0(1,0,0)+3(0,1,0)+2(0,0,1)+2(2,0,3) eq (4,3,8)
+  $
+  Por lo que no se cumple la unicidad.
+
+  De ser linealmente independiente pero no generar el espacio vectorial, habría elementos de $V$ que no se podrían expresar como combinación lineal de elementos del conjunto, por lo que no sería base.
+]
+
+#proposition()[
+  Son equivalentes
+  + $S$ es una base de $V$,
+  + $S$ es un conjunto minimal de generadores,
+  + $S$ es un conjunto maximal de vectores linealmente dependientes.
 ]
 
 
