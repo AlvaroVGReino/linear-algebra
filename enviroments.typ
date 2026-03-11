@@ -2,6 +2,8 @@
 #import "@preview/rich-counters:0.2.1": *
 #import "@preview/hei-synd-report:0.1.1": *
 #import "@preview/clean-cnam-template:1.6.2": *
+#import "@preview/cetz:0.4.2"
+
 
 #set heading(numbering: "1.1")
 #set enum(numbering: "I.")
@@ -48,6 +50,19 @@
 #let dim = "dim"
 
 #let base = $cal(B)$
+
+//Por arreglar
+
+#let intsup(a, b, f) = {
+  $integral_(#a)^(#b) #f #place(right, dx: -31pt, dy: -4pt)[
+    #figure(kind: "Figura", supplement: [*Figura*], cetz.canvas({
+      import cetz.draw: *
+      set-style(mark: (end: ">"))
+      set-style(stroke: (thickness: 1pt))
+      line((0, 0), (0.025, 0.1))
+    }))
+  ]$
+}
 
 #show link: text.with(fill: blue)
 

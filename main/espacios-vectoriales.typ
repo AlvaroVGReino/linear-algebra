@@ -1143,12 +1143,8 @@ Es equivalente el enunciado del Lema de Zorn.
   Todo conjunto de vectores escalonados no nulos es linealmente independiente
 ]
 
-#definition(title: "Método de Gauss- Jordan")[
-
-]
-
 #example[
-  Implementemos el método de Gauss-Jordan.
+  Implementemos el método de escalonado.
 
   Tenemos $S eq {(2,3,4,1),(1,1,1,1),(2,3,5,0),(1,0,1,0),(1,0,3,5)}$ y queremos obtener una base del conjunto $S$. Luego:
   $
@@ -1256,8 +1252,8 @@ Es equivalente el enunciado del Lema de Zorn.
     <start-1>,
     <end-1>,
     stroke: academic-colors.error,
-    tip: (dash: "dashed"),
     from-offset: (3pt, 3pt),
+    tip: "straight",
     to-offset: (0pt, 3pt),
   )
 
@@ -1300,5 +1296,85 @@ Es equivalente el enunciado del Lema de Zorn.
   ]
 ]
 
+#ideabox()[
+  Para la facilitación en la aplicación de este método, es recomendable colocar los números mas sencillos de operar arriba (como los 1). También resulta mejor evitar las fracciones.
+]
 
+#example[
+  Queremos una base a partir de $T eq {(1,2,3,4),(0,1,0,0)}$ para generar $RR^4$, luego buscamos $4$ vectores linealmente independientes.
+  $
+    mat(
+      delim: #none,
+      1, 2, 3, 4;
+      0, 1, 0, 0;
+      quad, quad, quad, quad;
+      quad, quad, quad, quad;
+      quad, quad, quad, quad
+    )
+    #h(2cm)
+    mat(
+      delim: #none,
+      1, 2, 3, 4;
+      0, 1, 0, 0;
+      0, 0, 1, 0;
+      0, 0, 0, 1;
+      quad, quad, quad, quad
+    )
+  $
+  Por lo que hemos completado con la canónica, que al estar escalonada, es L.I. y $gen(T^(+)) eq RR^4$
+]
 
+#theorem(title: "Teorema de Steinitz")[
+  Sea $V$ un K-espacio vectorial, ${u_1, ..., u_n}$ un conjunto linealmente independiente y sea $base eq {v_i}_(i in I)$ una base de $V$.
+
+  Entonces existen índices $i_1,...,i_n in I$ tales que
+  $
+    (base without {v_(i_1), ..., v_(i_n)} union {u_i,...,u_n})
+  $
+  es una base de $V$.
+]
+
+#dem[
+  $
+    cases(reverse: #true, u_1 eq sum_(i in I) lambda_i v_i, {u_i}_(i in I) "L.I." then 0 in.not u_i) then exists lambda_(i_(1)) eq.not 0 then exists lambda_(i_1)^(-1) in K "tal que" \
+    lambda_(i_1)^(-1) u_1 eq lambda_(i_1)^(-1) (sum_(i in I) lambda_i v_i) eq lambda_(i_1)^(-1) lambda_1 v_1 + ... + lambda_(i_1)^(-1) lambda_(i_1) v_(i_1) + ... + lambda_(i_1)^(-1) lambda_n v_n then \
+    then v_(i_1) eq lambda_(i_1)^(-1) u_1 - (sum_(i in I_1) lambda_(i_1)^(-1) lambda_1 v_1) "tal que" I_1 eq I - {i_1} \
+  $
+
+  ¿Es ${u_1} union {v_i}_(i in I_1)$ base de $V$?
+
+  Trivialmente cierto que son generadores de $V$.
+
+  $
+    mu u_1 + sum_(i in I_1) mu_i v_i eq 0
+  $
+
+  ¿$mu eq 0 eq mu_i, quad forall in in I_1$?
+
+  $
+    mu (sum_(i in I) lambda_i v_i) + sum_(i in I_1) mu_i v_i eq 0 then \
+    mu lambda_(i_1) v_(i_1) + mu sum_(i in I_1) lambda_i v_i + sum_(i in I_1) mu_i v_i eq 0 then \
+    mu lambda_(i_1) v_(i_1) + sum_(i in I_1) (mu lambda_i + mu_i) v_i eq 0
+  $
+
+  Como esta es una combinación lineal de $base_1$ y $base$ es linealmente independiente,
+  $
+    cases(
+      reverse: #true,
+      mu lambda_(i_1) eq o then mu eq 0,
+      mu lambda_i+ mu_i eq 0 then mu_i eq 0
+    ) then {u_1} union {v_i}_(i in I_1) "es base"
+  $
+
+  $
+    base eq {u_1} union {v_i}_(i in I_1)
+  $
+  $
+    cases(
+      reverse: #true, u_2 eq lambda_1 v_1 + sum_(i in I_1) lambda_i v_i,
+      {u_2} "L.I." then u_2 eq.not 0
+    ) then exists lambda_(i_2) eq.not 0, quad i_2 in I_1
+  $
+
+  ...
+]
