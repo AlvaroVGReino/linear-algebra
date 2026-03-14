@@ -51,6 +51,10 @@
 
 #let base = $cal(B)$
 
+#let forallmost = $forall"*"$
+
+#let sumi = $sum_(i in I)$
+
 //Por arreglar
 
 #let intsup(a, b, f) = {
@@ -73,11 +77,38 @@
   radius: 5pt,
   stroke: none,
 )[
-  #align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Demostración.*]
+  #align(top + left)[#block(
+    breakable: false,
+  )[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Demostración.* \ $quad$]]
   #align(left)[#body]
   #align(right + bottom)[#qed()#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]]
   #parbreak()
 ]
+
+#let remark(body) = block(
+  width: 100%,
+  breakable: true,
+  inset: 5pt,
+  radius: 5pt,
+  stroke: none,
+)[
+  #align(top + left)[#block(
+    breakable: false,
+  )[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Observación.* \ $quad$]]
+  #align(left)[#body]
+  #align(right + bottom)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]]
+  #parbreak()
+]
+
+//#let remark = mathblock(
+//  blocktitle: "Observación",
+//  prefix: align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Observación.*],
+//  titlix: title => align(left)[#title],
+//  bodyfmt: body => align(left)[#body],
+//  inset: 5pt,
+//  suffix: align(right + bottom)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]],
+//  radius: 5pt,
+//)
 
 #let solution = mathblock(
   blocktitle: "Solución",
@@ -88,16 +119,6 @@
   radius: 5pt,
 )
 
-
-#let remark = mathblock(
-  blocktitle: "Observación",
-  prefix: align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Observación.*],
-  titlix: title => align(left)[#title],
-  bodyfmt: body => align(left)[#body],
-  inset: 5pt,
-  suffix: align(right + bottom)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]],
-  radius: 5pt,
-)
 
 #let exercise = mathblock(
   blocktitle: "Ejercicio",

@@ -29,7 +29,7 @@
 // Metadata of the document
 //
 #let doc = (
-  title: [*Algebra Lineal*],
+  title: [*Álgebra Lineal*],
   abbr: "Math",
   subtitle: [_Apuntes y Boletines_],
   url: "-----------------------",

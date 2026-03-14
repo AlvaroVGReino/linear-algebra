@@ -15,6 +15,9 @@
   date: date,
   tableof: tableof,
 )
+#set text(
+  size: 13pt,
+)
 
 //-------------------------------------
 // Content
@@ -30,12 +33,6 @@
 
 //
 //
-#include "/temp/01-intro.typ"
-#include "/temp/02-specification.typ"
-#include "/temp/03-design.typ"
-#include "/temp/04-implementation.typ"
-#include "/temp/05-validation.typ"
-#include "/temp/06-conclusion.typ"
 
 #heading(numbering: none, outlined: false)[] <sec:end>
 
