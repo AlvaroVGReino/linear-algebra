@@ -2092,6 +2092,3 @@ Es equivalente el enunciado del Lema de Zorn.
     chi_base (v) eq (2,1)
   $
 ]
-
-
-

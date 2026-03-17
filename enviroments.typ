@@ -33,6 +33,10 @@
 
 #let ker = "Ker"
 
+#let hom = "Hom"
+
+#let ran = "Rango"
+
 #let Ctl(sym: sym.corner.t.l) = block(align(top + left)[#scale(x: 150%, y: 150%)[#sym]])
 
 #let Cbr(sym: sym.corner.b.r) = block(align()[#scale(x: 150%, y: 150%)[#sym]])
@@ -43,6 +47,8 @@
 
 #let iso = $tilde.equiv$
 
+#let end = "End"
+
 #let to = $-->$
 
 #let then = $=>$
@@ -51,9 +57,30 @@
 
 #let base = $cal(B)$
 
+#let basec = $cal(C)$
+
+#let lik = $cal(L)_K$
+
+#let dual(a) = $hat(#a)$
+
+#let bidual(a) = $hat(hat(#a))$
+
 #let forallmost = $forall"*"$
 
 #let sumi = $sum_(i in I)$
+
+#let sumim = $sum_(i eq 1)^m$
+
+#let sumjn = $sum_(j eq 1)^n$
+
+#let fd = $dual(f)$
+
+#let vd = $dual(V)$
+
+#let bd = $dual(base)$
+
+
+
 
 //Por arreglar
 
@@ -135,5 +162,21 @@
   inset: 10pt,
   stroke: academic-colors.accent.darken(20%),
   bodyfmt: body => align(left)[#body],
+  radius: 5pt,
+)
+
+#let followexample = mathblock(
+  blocktitle: "Continuando",
+  inset: 10pt,
+  stroke: academic-colors.accent.darken(20%),
+  bodyfmt: body => align(left)[#body],
+  radius: 5pt,
+)
+
+#let note = mathblock(
+  blocktitle: "Nota",
+  inset: 10pt,
+  fill: academic-colors.success.lighten(90%),
+  stroke: academic-colors.success.darken(20%),
   radius: 5pt,
 )

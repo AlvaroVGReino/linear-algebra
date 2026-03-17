@@ -19,12 +19,15 @@
   size: 13pt,
 )
 
+#set align(horizon)
+
 //-------------------------------------
 // Content
 //
 // Apuntes
 //
 #include "/main/espacios-vectoriales.typ"
+#include "/main/aplicaciones-lineales.typ"
 
 // Boletines
 //

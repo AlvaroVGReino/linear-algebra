@@ -65,7 +65,7 @@
   maxdepth: 3,
 )
 
-#let gloss = true
+#let gloss = false
 #let appendix = false
 #let bib = (
   display: true,
