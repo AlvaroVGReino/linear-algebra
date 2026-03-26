@@ -1,10 +1,16 @@
-#import "/metadata.typ": *
-#import "@preview/clean-cnam-template:1.6.2": *
-#import "/enviroments.typ": *
+#import "../metadata.typ": *
+#import "../enviroments.typ": *
+
+#import "../temp/math.typ": *
+#import "../temp/text.typ": *
+#import "../temp/constants.typ": *
+
 #import "@preview/cetz:0.4.2"
 #import "@preview/larrow:1.0.1": *
 #import "@preview/wrap-it:0.1.1": wrap-content
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
+
+#set text(font: "New Computer Modern")
 
 #set footnote(numbering: "*")
 
@@ -58,7 +64,7 @@
   $
 ]
 
-#definition(title: "Matriz elemental")[
+#definition(title: "Matriz elemental", label: <def:matrix-elem>)[
 
   Sea $E_(i j) in M_(m times n) (K)$ una matriz llamada elemental:
   $
@@ -74,7 +80,7 @@
       0, 0, dots, 0, dots, 0
     )
   $
-]<def:matrix-elem>
+]
 
 #proposition()[
 
@@ -131,7 +137,7 @@
   $
 ]
 
-#ideabox()[
+#idea()[
 
   Sea $f:V to V'$ una aplicación lineal tal que
   $
@@ -465,7 +471,7 @@
   $
 ]
 
-#ideabox()[
+#idea()[
 
   Esto podemos interpretarlo paso a paso, como ya hemos visto que
   $
@@ -535,7 +541,7 @@
   $
 ]
 
-#ideabox()[
+#idea()[
 
   Para que una matriz sea invertible debe ser cuadrada. Las matrices no cuadradas nunca tienen inversa.
 ]
@@ -654,7 +660,7 @@
   $
 ]
 
-#proposition()[
+#proposition(label: <prop:factorizacion-cambio-base>)[
 
   Sean $V,V'$ K-espacios vectoriales y $f:V to V'$ una aplicación lineal tal que
   $
@@ -675,7 +681,7 @@
                                       V_base_1 edge(f, ->) & V_base'_1
     $,
   )]
-]<prop:factorizacion-cambio-base>
+]
 
 #example[
 
@@ -829,7 +835,7 @@
   Esta implicación es trivial porque gracias a la @prop:factorizacion-cambio-base podemos generar la factorización por cambios de base que demuestra la equivalencia de $A$ y $B$.
 ]
 
-#corolary()[
+#corollary()[
 
   Sea $f in end_K (V)$ tal que
   $
@@ -850,7 +856,7 @@
   $
 ]
 
-#ideabox()[
+#idea()[
 
   Enfaticemos en el parecido de las definiciones de equivalencia y semejanza.
 
@@ -1650,7 +1656,7 @@
   En la que el cuadrado superior derecho coincide con las combinaciones lineales de $v_1$ hasta $v_r$ y el resto, todo ceros, es el completamieno de la base.
 ]
 
-#corolary()[
+#corollary()[
 
   Sea $A in M_(m times n) (K)$ una matriz de rango $r$, esto significa que las matrices
   $

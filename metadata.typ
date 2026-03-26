@@ -18,7 +18,7 @@
   step-size: 10,
   stroke-style: stroke(
     //paint: gradient.linear(..color.map.rocket, angle: 135deg),
-    paint: gradient.radial(..color.map.crest),
+    paint: gradient.radial(..color.map.viridis),
     thickness: 3pt,
     join: "round",
   ),
@@ -69,6 +69,6 @@
 #let appendix = false
 #let bib = (
   display: true,
-  path: "/tail/bibliography.bib",
+  path: "bibliography.bib",
   style: "apa", //"ieee", "chicago-author-date", "chicago-notes", "mla"
 )

@@ -1,6 +1,13 @@
-#import "/metadata.typ": *
-#import "/enviroments.typ": *
-#import "@preview/clean-cnam-template:1.6.2": *
+#import "../tail/typst-sympy-calculator.typ": *
+#import "../metadata.typ": *
+#import "../enviroments.typ": *
+
+#import "../temp/math.typ": *
+#import "../temp/text.typ": *
+#import "../temp/constants.typ": *
+
+#set text(font: "New Computer Modern")
+
 
 
 #pagebreak()

@@ -1,9 +1,16 @@
-#import "/metadata.typ": *
-#import "@preview/clean-cnam-template:1.6.2": *
-#import "/enviroments.typ": *
+#import "../metadata.typ": *
+
+#import "../enviroments.typ": *
+
+#import "../temp/math.typ": *
+#import "../temp/text.typ": *
+#import "../temp/constants.typ": *
+
 #import "@preview/cetz:0.4.2"
 #import "@preview/larrow:1.0.1": *
+#import "@preview/wrap-it:0.1.1": wrap-content
 
+#set text(font: "New Computer Modern")
 #set footnote(numbering: "*")
 #let lal = arrow-label.with(dx: 0mm, dy: 0mm)
 
@@ -30,7 +37,7 @@
   $
 ]
 
-#ideabox()[
+#idea()[
   $
     K #text()[cuerpo] <==> cases((K,+) #text()[abeliano], (K without {0}) #text()[abeliano])
   $
@@ -67,14 +74,14 @@
   $
 ]
 
-#ideabox()[
+#idea()[
   Si $V$ es espacio vectorial sobre $K$ y $A$ es un conjunto:
   $
     V^A eq {f:A to V : f #text()[es aplicación]}
   $
 ]
 
-#ideabox()[
+#idea()[
   Por lo general, en lo que respecta a la notación:
   $
     lambda in K, lambda #text()[escalar] \
@@ -92,7 +99,8 @@
   - $U eq {(x,y,z) in RR^3 : x = 0 }$ es subespacio porque:
   $
     (0,0,0) in U \
-    lambda · (0,b,c) + mu · (0,b',c') eq (0,lambda b, lambda c) + (0, mu b', mu c') eq (0,lambda b + mu b',lambda c + mu c')
+    lambda · (0,b,c) + mu · (0,b',c') eq \
+    eq (0,lambda b, lambda c) + (0, mu b', mu c') eq (0,lambda b + mu b',lambda c + mu c')
   $
   - $U eq {(x,y) in RR^2 : x + y = 1}$ se tiene que $U eq.not emptyset$ pero como $0 + 0 eq.not 1 =>(0,0) in.not U$ no es un espacio vectorial.
 ]
@@ -153,8 +161,10 @@
 Sean $V_1,V_2,...,V_n$ K-espacios vectoriales, entonces $V_1 times V_2 times ... times V_n$ es un K-espacio vectorial y puede operar de la siguiente manera:
 
 Dados $(v_1,v_2,...,v_n),(v'_1,v'_2, ... ,v'_n) in V_1 times V_2 times ... times V_n$
+
 $
-  (v_1,v_2,...,v_n)+(v'_1,v'_2, ... ,v'_n) eq (v_1 + v'_1,v_2 + v'_2, ... ,v_n + v'_n) in V_1 times V_2 times ... times V_n \
+  (v_1,v_2,...,v_n)+(v'_1,v'_2, ... ,v'_n) eq \
+  eq (v_1 + v'_1,v_2 + v'_2, ... ,v_n + v'_n) in V_1 times V_2 times ... times V_n \
   lambda · (v_1,v_2,...,v_n) eq (lambda · v_1,lambda · v_2,...,lambda · v_n) in V_1 times V_2 times ... times V_n
 $
 
@@ -328,7 +338,7 @@ $
   Una aplicación lineal $f: V to V'$ se dice que es un isomorfismo cuando es biyectiva. Si además $V eq V'$ se dice que es un automorfismo de $V$.
 ]
 
-#ideabox()[
+#idea()[
   $V$ y $V'$ son isomorfos ($V iso V'$) si existe $f: V to V'$ isomorfismo
 ]
 
@@ -364,7 +374,7 @@ $
   Al conjunto de clases de se le denota $V slash U$
 ]
 
-#example()[
+#example(label: <exa:cocient.set>)[
   Este concepto se puede interpretar como una laminación infinita del espacio $V$ mediante translaciones del subespacio $U$. Si consideramos el $RR$-espacio vectorial $V eq RR^2$ y el subespacio $U eq {(x,0):x in RR}$, el subespacio $U$ correspondería con el eje de abscisas en $RR^2$, luego cada una de las clases de equivalencia como se define mediante:
   $
     x ~ y : <=> x-y in U
@@ -379,7 +389,14 @@ $
 
   Por lo que cada $b in RR$ tal que ${(x,b) : x in RR}$ tendrá su propia clase de equivalencia que translada la recta horizontal con altura $b$.
 
-  #place(right, dx: 0pt, dy: 16pt)[
+  - $b eq 0 quad to$ el propio subespacio $U$,
+  - $b eq 1 quad to$ otra recta,
+  - $b eq 2 quad to$ otra,
+  - $b eq pi quad to$ otra,
+  - etc.
+
+
+  #align(horizon)[
     #figure(
       kind: "Figura",
       supplement: [*Figura*],
@@ -396,6 +413,7 @@ $
         content((-3.5, 4.5))[
           $V eq RR^2$
         ]
+
         // Ejes
         line((-4, 0), (4, 0))
         line((0, -2), (0, 4))
@@ -406,7 +424,6 @@ $
         content((5.5, 0))[
           #text(fill: academic-colors.secondary)[$U => b eq 0$]
         ]
-
         // Cosets
         stroke(academic-colors.neutral-dark.lighten(50%))
         line((-4, 1), (4, 1))
@@ -419,17 +436,10 @@ $
         content((5.3, -1.41))[$b eq -sqrt(2)$]
       }),
       caption: [Representación gráfica de las \ clases de equivalencia de $V slash U$],
-    )
-  ]
-  - $b eq 0 quad to$ el propio subespacio $U$,
-  - $b eq 1 quad to$ otra recta,
-  - $b eq 2 quad to$ otra,
-  - $b eq pi quad to$ otra,
-  - etc.
-  #v(4cm)
+    )]
 
 
-] <exa:cocient.set>
+]
 
 
 #proposition()[
@@ -456,7 +466,8 @@ $
      <=> & quad quad (v+v') + U & eq.quest & quad quad (u+u')+U =>
   $
   $
-    =>(v+v')-(u+u') in U => (v+v')+(u+u') eq v-u + v' - u' in U
+    =>(v+v')-(u+u') in U => (v+v')+(u+u') eq \
+    eq v-u + v' - u' in U
   $
   Por lo que la suma está bien definida.
 
@@ -476,7 +487,7 @@ $
   $
 ]
 
-#ideabox[
+#idea[
   Retomando el @exa:cocient.set, se puede apreciar fácilmente de qué manera la ausencia de translación del subespacio $U$ es el propio subespacio, por eso este coincide con el $ker(pi)$.
 
   Dicho de otra manera, los únicos vectores de $V$ que difieren 0 de $U$ son los que pertenecen a $U$.
@@ -495,7 +506,7 @@ $
   $
 ]
 
-#ideabox()[
+#idea()[
   Como dos elementos están relacionados si y solo si sus imágenes son iguales, entonces cada clase de equivalencia de $V slash ~_f$ se corresponde con los elementos de $V$ que tienen la misma imagen, es decir, con los elementos de $V$ que difieren en algo que está dentro del $ker(f)$.
 
   Por lo tanto, cada clase de equivalencia de $V slash ~_f$ es una translación del subespacio $ker(f)$ y, finalmente, $V slash ~_f eq V slash ker(f)$.
@@ -519,7 +530,7 @@ $
   $
 ]
 
-#todobox()[
+#remark()[
   Como ya se ha hecho en repetidas ocasiones, quedaría demostrar que $f_1,f_2$ y $f_3$ son respectivamente sobreyectivas, biyectivas e inyectivas.
 ]
 
@@ -544,8 +555,10 @@ $
   luego $f$ está bien definida.
 
   ¿Es $f$ lineal?
+
+  Tenemos que para todo $v in U$:
   $
-    forall v in U, quad v' + U in V slash U cases(
+    v' + U in V slash U cases(
       f((v+U)+(v'+U)) eq.quest f(v+U)+f(v'+U),
       f(lambda(v+U)) eq.quest lambda f(v+U)
     )
@@ -564,15 +577,19 @@ $
   ¿Es $f$ biyectiva?
 
   Para demostrarlo, veremos si es sobreyectiva y inyectiva.
+
   ¿Es $f$ sobreyectiva?
+
+  Ahora para todo $v+W in V slash W$
   $
-    forall v+W in V slash W, quad exists v + U in V slash U : f(v+U) eq v+ W => im (f) eq V slash W
+    exists v + U in V slash U : f(v+U) eq v+ W => im (f) eq V slash W
   $
   Luego sí lo es.
 
   ¿Es $f$ inyectiva?
   $
-    ker(f) eq {v+U in V slash U : f(v + U) eq 0} eq {v+U in V slash U : v+W eq 0} \
+    ker(f) eq {v+U in V slash U : f(v + U) eq 0} eq\
+    eq {v+U in V slash U : v+W eq 0} \
     eq {v+U in V slash U :v in W} eq W slash U
   $
   Luego por el primer Teorema de Isomorfía
@@ -581,7 +598,7 @@ $
   $
 ]
 
-#ideabox()[
+#idea()[
   Recordemos que el primer Teorema de Isomorfía decía que siendo $f:A to B$ isomorfismo, se cumple
   $
     A slash ker(f) iso B
@@ -639,13 +656,13 @@ $
 ]
 
 
-#theorem()[
+#theorem(label: <theo:rel-subesp>)[
 
   Sean $U_1$ y $U_2$ subespacios del K-espacio vectorial $V$, se tiene
   $
     (U_1 + U_2)/(U_1) iso (U_2)/(U_1 inter U_2)
   $
-]<theo:rel-subesp>
+]
 
 #dem()[
   Sea la siguiente descomposición
@@ -691,7 +708,7 @@ $
   $S$ es linealmente independiente si existe $sum lambda_i s_i eq 0, lambda_i in K, s_i in S, lambda_i eq 0 quad forallmost #footnote()[La notación "$forallmost$" significa "para casi todo". Referido a que existe una cantidad finita de elementos que no cumplen la condición] i in I quad (#text[con algún $lambda_i eq.not 0$])$
 ]
 
-#ideabox()[
+#idea()[
   $S$ será linealmente dependiente si existen por lo menos dos vectores $v_1, v_2 in S$ tales que:
   $
     v_1 eq lambda v_2 quad (lambda in K)
@@ -790,7 +807,7 @@ $
   $
 ]
 
-#ideabox()[
+#idea()[
   Esto quiere decir que para cada elemento de $V$, solo existe una única forma de ser representado por combinaciones lineales de la base.
 ]
 
@@ -897,26 +914,26 @@ $
   El resto de implicaciones se deducen de las anteriores.
 ]
 
-#corolary()[
+#corollary()[
   Si $base, base'$ son bases y $base subset base'$ luego se tiene $base eq base'$
 ]
 
 #v(7pt)
 
-#theorem()[
+#theorem(label: <theo:bases>)[
   #footnote[Este teorema requiere asumir el Axioma de elección] Sea $V$ un K-espacio vectorial tal que $T,L subset V$ con $T$ L.I. y $gen(L) eq V$, luego
   $
     exists L_0 subset L : T union L_0 "es base de " V
   $
-] <theo:bases>
+]
 
-#ideabox()[
+#idea()[
   Recordemos que el Axioma de elección dice que si ${A_i}_(i in I)$ es una familia de conjuntos no vacíos disjuntos dos a dos, entonces existe un conjunto $B subset union.big_(i in I) A_i$ tal que $B inter A_i$ tiene exactamente un elemento para cada $i in I$ (es decir, se puede elegir un elemento de cada $A_i$). Alternativamente, si ${A_i}_(i in I)$ es una familia de conjuntos no vacíos, entonces $product_(i in I) A_i eq.not emptyset$.
 ] <axioma-eleccion>
 
 Es equivalente el enunciado del Lema de Zorn.
 
-#ideabox()[
+#idea()[
   Recordemos que el Lema de Zorn dice que si $A$ es un conjunto ordenado no vacío en el que cada cadena tiene una cota superior, entonces $A$ tiene algún elemento maximal.
 ] <lema-zorn>
 
@@ -1027,11 +1044,11 @@ Es equivalente el enunciado del Lema de Zorn.
   que genera $V$ y es L.I. luego es base de $V$.
 ]
 
-#ideabox()[
+#idea()[
   En otras palabras, el @theo:bases dice que si tienes algunos vectores independientes, siempre puedes completarlos hasta una base usando vectores de cualquier conjunto generador.
 ]
 
-#corolary()[
+#corollary()[
   Todo espacio vectorial tiene una base.
 ]
 
@@ -1043,11 +1060,11 @@ Es equivalente el enunciado del Lema de Zorn.
   es una base de $V$.
 ]
 
-#corolary()[
+#corollary()[
   Si $V$ tiene un conjunto de generadores finito, $V$ tiene una base finita
 ]
 
-#corolary()[
+#corollary()[
   Si $U$ es un subespacio de $V$, toda base de $U$ puede completarse a una base de $V$.
 ]
 #dem[
@@ -1301,8 +1318,6 @@ Es equivalente el enunciado del Lema de Zorn.
 
   #place(right, dx: -95pt, dy: -33.5pt)[
     #figure(
-      kind: "Figura",
-      supplement: [*Figura*],
       cetz.canvas({
         import cetz.draw: *
         set-style(stroke: (paint: academic-colors.error, thickness: 1pt))
@@ -1312,7 +1327,7 @@ Es equivalente el enunciado del Lema de Zorn.
   ]
 ]
 
-#ideabox()[
+#idea()[
   Para la facilitación en la aplicación de este método, es recomendable colocar los números mas sencillos de operar arriba (como los 1). También resulta mejor evitar las fracciones.
 ]
 
@@ -1391,7 +1406,6 @@ Es equivalente el enunciado del Lema de Zorn.
   $
   Sustituyendo por @eq:def-elm-b1 obtenemos
 
-  #warningbox()[]
   $
     mu sumi lambda_i v_i + sum_(i in I_1) mu_i v_i eq 0
   $
@@ -1468,11 +1482,11 @@ Es equivalente el enunciado del Lema de Zorn.
   que sigue siendo base.
 ]
 
-#ideabox()[
+#idea()[
   Necesariamente, cada uno de los nuevos vectores $u_n$ pertenece al espacio generado por la base original, por lo tanto depende de los vectores de la base. Por lo que se podrán eliminar esos nuevos vectores dependientes de la base.
 ]
 
-#corolary()[
+#corollary()[
   Sea $V$ un K-espacio vectorial con $base$ y $base'$ bases de $V$, entonces $base$ y $base'$ son equipotentes, es decir,
   $
     |base| eq |base'|
@@ -1521,7 +1535,7 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#theorem()[
+#theorem(label: <theo:base-app-lin>)[
 
   Sean $V$ y $V'$ K-espacios vectoriales tales que $base eq {u_i}_(i in I)$ es base de $V$ y $S eq {v_i}_(i in I) subset V'$. Entonces existe una única aplicación lineal
   $
@@ -1531,9 +1545,9 @@ Es equivalente el enunciado del Lema de Zorn.
   + $f$ es inyectiva $<=> S$ es linealmente independiente,
   + $f$ es sobreyectiva $<=> gen(S) eq V'$,
   + $f$ es isomorfismo $<=> S$ es base de $V'$.
-]<theo:base-app-lin>
+]
 
-#ideabox()[
+#idea()[
 
   Una base determina completamente una aplicación lineal. Como $forall v in V$
   $
@@ -1715,7 +1729,7 @@ Es equivalente el enunciado del Lema de Zorn.
   Por otro lado, como $f$ es sobreyectiva, $gen((1,1)","(0,1)) eq V' eq RR^2$, pero si volvemos a considerar $f'$, esto tampoco se sumpliría por no ser esta sobreyectiva.
 ]
 
-#corolary()[
+#corollary()[
 
   Sea $f:V to V'$, se tiene que
   $
@@ -1858,7 +1872,7 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#ideabox()[
+#idea()[
   Podemos interpretar el $ker(f)$ como los vectores que se anulan tras la aplicación, luego son las dimensiones perdidas.
 
   Asimismo, podemos interpretar la $im(f)$ como las dimensiones que se mantienen tras la aplicación.
@@ -1921,7 +1935,7 @@ Es equivalente el enunciado del Lema de Zorn.
   Luego se verifica perfectamente.
 ]
 
-#corolary()[
+#corollary()[
 
   Si $U$ es un subespacio de $V$, se verifica:
   $
@@ -1942,12 +1956,12 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#corolary()[
+#corollary(label: <eq:rel-dim-subesp-esp>)[
 
   Sea $U$ un subespacio de $V$, se verifican:
   + $dim(U) <= dim(V)$
   + $dim(U) eq dim(V) <==> U eq V$
-]<eq:rel-dim-subesp-esp>
+]
 
 #dem[
   1.
@@ -1971,13 +1985,13 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#theorem(title: "Formula de Grassman")[
+#theorem(title: "Formula de Grassman", label: <theo:formula-grassman>)[
 
   Sean $U_1$, $U_2$ subespacios vectoriales de $V$. Se tiene que:
   $
     dim(U_1) + dim(U_2) eq dim(U_1 + U_2) + dim(U_1 inter U_2)
   $<eq:formula-grassman>
-]<theo:formula-grassman>
+]
 
 #dem[
 
@@ -2024,7 +2038,7 @@ Es equivalente el enunciado del Lema de Zorn.
   Entonces $chi_base$ es un isomorfismo
 ]
 
-#ideabox()[
+#idea()[
   La aplicación $chi_base$ está convirtiendo los vectores de $V$ en sus coordenadas.
 ]
 

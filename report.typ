@@ -1,8 +1,17 @@
 #import "@preview/hei-synd-report:0.1.1": *
-#import "@preview/clean-cnam-template:1.6.2": *
-#import "/metadata.typ": *
-#import "/tail/bibliography.typ": *
+#import "./metadata.typ": *
+#import "./tail/bibliography.typ": *
 #import "/tail/glossary.typ": *
+#import "/temp/math.typ": *
+#import "/temp/constants.typ": *
+#import "/temp/text.typ": *
+#import "@preview/great-theorems:0.1.2": *
+
+
+#set text(font: "New Computer Modern")
+#set par(justify: true)
+#set text(lang: "es", hyphenate: true)
+#set math.equation(numbering: "(1)")
 #show: make-glossary
 #register-glossary(entry-list)
 //-------------------------------------
@@ -19,20 +28,22 @@
   size: 13pt,
 )
 
-#set align(horizon)
+#set math.equation(supplement: [Ecuación])
+
 
 //-------------------------------------
 // Content
 //
 // Apuntes
 //
-#include "/main/espacios-vectoriales.typ"
-#include "/main/aplicaciones-lineales.typ"
+#include "./main/espacios-vectoriales.typ"
+#include "./main/aplicaciones-lineales.typ"
 
 // Boletines
 //
-#include "/main/boletin-01.typ"
-#include "/main/boletin-03.typ"
+#include "./main/boletin-01.typ"
+#include "./main/boletin-03.typ"
+#include "./main/test.typ"
 
 //
 //

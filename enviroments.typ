@@ -13,6 +13,7 @@
 
 #set text(lang: "es")
 
+
 #let academic-colors = (
   primary: rgb("#1a3c6e"), // Azul académico profundo
   secondary: rgb("#4f6fa8"), // Azul medio suave
