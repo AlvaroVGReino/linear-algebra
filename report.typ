@@ -1,5 +1,13 @@
 #import "@preview/hei-synd-report:0.1.1": *
 #import "./metadata.typ": *
+
+#let chapter = counter("chapter")
+#let chapter-counter = counter("heading")
+#show heading: it => {
+  chapter-counter.step()
+  it
+}
+
 #import "./tail/bibliography.typ": *
 #import "/tail/glossary.typ": *
 #import "/temp/math.typ": *
@@ -8,6 +16,8 @@
 #import "@preview/great-theorems:0.1.2": *
 
 
+
+#set heading(numbering: "1.")
 #set text(font: "New Computer Modern")
 #set par(justify: true)
 #set text(lang: "es", hyphenate: true)
@@ -38,13 +48,14 @@
 //
 #include "./main/espacios-vectoriales.typ"
 #include "./main/aplicaciones-lineales.typ"
+#include "./main/sistemas-de-ec-lineales.typ"
+#include "./main/determinantes.typ"
+#include "./main/clasificacion-de-endomorfismos.typ"
 
 // Boletines
 //
 #include "./main/boletin-01.typ"
 #include "./main/boletin-03.typ"
-#include "./main/test.typ"
-
 //
 //
 

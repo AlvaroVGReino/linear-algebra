@@ -1,6 +1,12 @@
 
 #let all-counter = counter("counter")
 #let box-id-counter = counter("box-id")
+#let chapter = counter("chapter")
+#let chapter-counter = counter("heading")
+#show heading: it => {
+  chapter-counter.step()
+  it
+}
 
 #let code-bg = rgb("#efefef")
 #let black-n = rgb("#333333")

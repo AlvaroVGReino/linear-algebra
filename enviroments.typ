@@ -1,8 +1,10 @@
 #import "@preview/great-theorems:0.1.2": *
 #import "@preview/rich-counters:0.2.1": *
 #import "@preview/hei-synd-report:0.1.1": *
-#import "@preview/clean-cnam-template:1.6.2": *
 #import "@preview/cetz:0.4.2"
+#import "@preview/larrow:1.0.1": *
+#import "@preview/wrap-it:0.1.1": wrap-content
+#import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 
 
 #set heading(numbering: "1.1")
@@ -98,86 +100,4 @@
 
 #show link: text.with(fill: blue)
 
-#let dem(body) = block(
-  width: 100%,
-  breakable: true,
-  inset: 5pt,
-  radius: 5pt,
-  stroke: none,
-)[
-  #align(top + left)[#block(
-    breakable: false,
-  )[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Demostración.* \ $quad$]]
-  #align(left)[#body]
-  #align(right + bottom)[#qed()#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]]
-  #parbreak()
-]
 
-#let remark(body) = block(
-  width: 100%,
-  breakable: true,
-  inset: 5pt,
-  radius: 5pt,
-  stroke: none,
-)[
-  #align(top + left)[#block(
-    breakable: false,
-  )[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Observación.* \ $quad$]]
-  #align(left)[#body]
-  #align(right + bottom)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]]
-  #parbreak()
-]
-
-//#let remark = mathblock(
-//  blocktitle: "Observación",
-//  prefix: align(top + left)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Ctl()] *Observación.*],
-//  titlix: title => align(left)[#title],
-//  bodyfmt: body => align(left)[#body],
-//  inset: 5pt,
-//  suffix: align(right + bottom)[#text(fill: academic-colors.neutral-dark.lighten(50%))[#Cbr()]],
-//  radius: 5pt,
-//)
-
-#let solution = mathblock(
-  blocktitle: "Solución",
-  prefix: align(top + left)[#text(fill: academic-colors.accent.lighten(50%))[#Ctl()] *Solución.*],
-  inset: 10pt,
-  bodyfmt: body => align(left)[#text(fill: academic-colors.neutral-dark.lighten(10%))[#body]],
-  suffix: align(right + bottom)[#qed()#text(fill: academic-colors.accent.lighten(50%))[#Cbr()]],
-  radius: 5pt,
-)
-
-
-#let exercise = mathblock(
-  blocktitle: "Ejercicio",
-  prefix: align(left)[*Ejercicio.*],
-  inset: 5pt,
-  stroke: academic-colors.accent.darken(20%),
-  bodyfmt: body => align(left)[#body],
-  radius: 5pt,
-)
-
-#let example = mathblock(
-  blocktitle: "Ejemplo",
-  prefix: align(left)[*Ejemplo.*],
-  inset: 10pt,
-  stroke: academic-colors.accent.darken(20%),
-  bodyfmt: body => align(left)[#body],
-  radius: 5pt,
-)
-
-#let followexample = mathblock(
-  blocktitle: "Continuando",
-  inset: 10pt,
-  stroke: academic-colors.accent.darken(20%),
-  bodyfmt: body => align(left)[#body],
-  radius: 5pt,
-)
-
-#let note = mathblock(
-  blocktitle: "Nota",
-  inset: 10pt,
-  fill: academic-colors.success.lighten(90%),
-  stroke: academic-colors.success.darken(20%),
-  radius: 5pt,
-)

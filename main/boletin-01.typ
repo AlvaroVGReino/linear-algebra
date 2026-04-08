@@ -4,8 +4,9 @@
 #import "../temp/math.typ": *
 #import "../temp/text.typ": *
 #import "../temp/constants.typ": *
-#set text(font: "New Computer Modern")
 
+
+#chapter-counter.step()
 #pagebreak()
 
 = Boletín 1

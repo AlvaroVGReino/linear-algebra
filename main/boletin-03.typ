@@ -1,4 +1,3 @@
-#import "../tail/typst-sympy-calculator.typ": *
 #import "../metadata.typ": *
 #import "../enviroments.typ": *
 

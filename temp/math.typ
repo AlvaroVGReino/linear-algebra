@@ -16,6 +16,7 @@
   prefix: auto,
   titlfmt: title => [*#title*],
   suffix: none,
+  nota: bool,
   bodyfmt: body => body,
   kind: auto,
   label: none,
@@ -43,8 +44,10 @@
         }
         #if counter != auto and numbering != auto {
           if prefix != auto {
-            prefix(context counter.display(numbering))
+            prefix(context chapter-counter.display(), [.], context counter.display(numbering))
           } else {
+            context chapter-counter.display()
+            [.]
             context counter.display(numbering)
           }
         }
@@ -60,7 +63,13 @@
           if prefix != auto {
             prefix(context counter.display(numbering))
           } else {
-            context counter.display(numbering)
+            if nota != true {
+              context chapter-counter.display()
+              [.]
+              context counter.display(numbering)
+            } else {
+              $quad$
+            }
           }
         }
       ]
@@ -155,6 +164,32 @@
   )[#body]
 }
 
+#let lemma(
+  width: 100%,
+  radius: (left: 1pt, right: 4pt),
+  border: 4pt,
+  inset: 16pt,
+  outset: (left: -2pt),
+  label: none,
+  title: none,
+  body,
+) = {
+  mathbox(
+    width: width,
+    radius: radius,
+    border: border,
+    inset: inset,
+    outset: outset,
+    linecolor: cbase,
+    title: title,
+    numbering: "1.1",
+    kind: "gen",
+    label: label,
+    supplement: [Lema],
+    blocktitle: [*Lema*],
+  )[#body]
+}
+
 #let definition(
   width: 100%,
   radius: (left: 1pt, right: 4pt),
@@ -189,6 +224,7 @@
   outset: (left: -2pt),
   label: none,
   title: none,
+  nota: true,
   body,
 ) = {
   mathbox(
@@ -199,6 +235,7 @@
     outset: outset,
     linecolor: note-color,
     title: title,
+    nota: nota,
     numbering: "1.1",
     kind: "gen",
     label: label,

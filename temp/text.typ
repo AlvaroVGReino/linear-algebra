@@ -15,6 +15,7 @@
   bodyfmt: body => body,
   kind: auto,
   qed: bool,
+  nota: bool,
   label: none,
   supplement: [Nota],
   blocktitle: auto,
@@ -61,9 +62,15 @@
         }
         #if counter != auto and numbering != auto {
           if prefix != auto {
-            prefix(context counter.display(numbering))
+            prefix(context chapter-counter.display(), [.], context counter.display(numbering))
           } else {
-            context counter.display(numbering)
+            if nota != true {
+              context chapter-counter.display()
+              [.]
+              context counter.display(numbering)
+            } else {
+              $quad$
+            }
           }
         }
       ]
@@ -219,6 +226,7 @@
   qed: false,
   title: none,
   label: none,
+  nota: true,
   body,
 ) = {
   textbox(
@@ -228,6 +236,7 @@
     flag: flag,
     qed: qed,
     title: title,
+    nota: nota,
     label: label,
     supplement: [Idea],
     numbering: "1.1",

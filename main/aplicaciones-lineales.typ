@@ -5,16 +5,12 @@
 #import "../temp/text.typ": *
 #import "../temp/constants.typ": *
 
-#import "@preview/cetz:0.4.2"
-#import "@preview/larrow:1.0.1": *
-#import "@preview/wrap-it:0.1.1": wrap-content
-#import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 
-#set text(font: "New Computer Modern")
-
+#chapter-counter.step()
 #set footnote(numbering: "*")
 
 #pagebreak()
+
 
 = Aplicaciones Lineales
 
@@ -82,7 +78,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Dimensión del espacio de matrices")[
 
   Para toda matriz, se tiene
   $
@@ -120,7 +116,7 @@
   $
 ]
 
-#definition()[
+#definition(title: "Matriz asociada a una aplicación lineal")[
 
   Sea $f: V to V'$ una aplicación K-lineal tal que
   $
@@ -161,7 +157,7 @@
   $
 ]
 
-#remark[
+#remark(title: "Cálculo de la imagen mediante coordenadas")[
   Sea $v in V$.
 
   Queremos saber $f(v)$ a partir de la matriz asociada a $f$.
@@ -277,7 +273,7 @@
   $
 ]
 
-#definition()[
+#definition(title: "Espacio de aplicaciones lineales")[
 
   Sean $V$, $V'$ K-espacios vectoriales.
 
@@ -418,7 +414,7 @@
   En conclusión, $phi_(base base')$ es un isomorfismo.
 ]
 
-#proposition()[
+#proposition(title: "Matriz de la composición de aplicaciones lineales")[
 
   Sean $V,V',V''$ K-espacios vectoriales tales que
   $
@@ -439,7 +435,7 @@
   $
 ]
 
-#dem[
+#dem(title: "Demostración de la regla de composición matricial")[
   Sean
   $
     A eq (f)_(base base') eq (a_(i j)) in M_(m times n) (K), \
@@ -471,7 +467,7 @@
   $
 ]
 
-#idea()[
+#idea(title: "Interpretación operativa de la composición BA")[
 
   Esto podemos interpretarlo paso a paso, como ya hemos visto que
   $
@@ -527,7 +523,7 @@
 
 ]
 
-#definition()[
+#definition(title: "Matriz invertible")[
 
   Sea $A in M_(n) (K)$, si existe $B in M_n (K)$ tal que
   $
@@ -541,12 +537,12 @@
   $
 ]
 
-#idea()[
+#idea(title: "Condición necesaria: matriz cuadrada")[
 
   Para que una matriz sea invertible debe ser cuadrada. Las matrices no cuadradas nunca tienen inversa.
 ]
 
-#example[
+#example(title: "Cálculo de la inversa por operaciones elementales")[
 
   Consideremos la matriz
   $
@@ -572,7 +568,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Isomorfismo y matriz invertible")[
 
   Sean $V,V'$ K-espacios vectoriales tales que
   $
@@ -647,7 +643,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Imagen de una base bajo aplicación invertible")[
 
   Sea $A in M_n (K)$ una matriz no singular tal que $A$ es una matriz de cambio de base y
   $
@@ -660,7 +656,7 @@
   $
 ]
 
-#proposition(label: <prop:factorizacion-cambio-base>)[
+#proposition(title: "Factorización por cambio de base", label: <prop:factorizacion-cambio-base>)[
 
   Sean $V,V'$ K-espacios vectoriales y $f:V to V'$ una aplicación lineal tal que
   $
@@ -683,7 +679,7 @@
   )]
 ]
 
-#example[
+#example(title: "Interpretación geométrica del cambio de base en RR^2")[
 
   Veamos como se puede interpretar el cambio de base.
 
@@ -791,7 +787,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Equivalencia y cambio de bases en una aplicación lineal")[
 
   Sean $A,B in M_(m times n) (K)$, luego
   $
@@ -835,7 +831,7 @@
   Esta implicación es trivial porque gracias a la @prop:factorizacion-cambio-base podemos generar la factorización por cambios de base que demuestra la equivalencia de $A$ y $B$.
 ]
 
-#corollary()[
+#corollary(title: "Cambio de base en endomorfismos y conjugación")[
 
   Sea $f in end_K (V)$ tal que
   $
@@ -856,7 +852,7 @@
   $
 ]
 
-#idea()[
+#idea(title: "Relación entre equivalencia y semejanza")[
 
   Enfaticemos en el parecido de las definiciones de equivalencia y semejanza.
 
@@ -879,7 +875,7 @@
   Y aquellos $phi in hat(V)$ se llaman covectores.
 ]
 
-#proposition()[
+#proposition(title: "Construcción de la base dual")[
 
   Sea $V$ un espacio vectorial y ${v_i}_(i in I)$ una base de $V$.
 
@@ -896,7 +892,7 @@
   + Si $V$ tiene dimensión finita, entonces ${phi_i}_(i in I)$ es una base de $hat(V)$.
 ]
 
-#dem[
+#dem(title: "Demostración de independencia y generación en el dual")[
 
   1.
   Supongamos que existe una combinación lineal nula
@@ -950,7 +946,7 @@
 
 ]
 
-#example[
+#example(title: "Covector en RR^2 y líneas equipotenciales")[
 
   Sea $V eq RR^3$. Consideremos una función lineal $f in hat(V)$ que lleve los vectores de $V$ a un escalar. Por ejemplo:
   $
@@ -1082,7 +1078,7 @@
 
 ]
 
-#example[
+#example(title: "Cálculo explícito de la base dual en RR^4")[
 
   Tomemos
   $
@@ -1129,7 +1125,7 @@
 
 ]
 
-#example[
+#example(title: "Coordenadas en base dual y funcional dado")[
 
   Sea $base eq {v_1,v_2,v_3,v_4}$ una base de $V eq RR^4$ del ejemplo anterior y sea $hat(base) eq {phi_1,phi_2,phi_3,phi_4}$ la base dual de $base$.
 
@@ -1171,9 +1167,6 @@
     phi_3(x,y,z,t) eq x-y+z\
     phi_4(x,y,z,t) eq y-z+t
   $
-]
-
-#followexample[
 
   Sea
   $
@@ -1204,7 +1197,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Aplicación canónica al bidual")[
 
   Sea $sigma:V to bidual(V)$ una aplicación lineal. Para $v in V$, $phi in vd$:
   $
@@ -1221,7 +1214,7 @@
   - Si la dimension de $V$ es finita, $sigma$ es un isomorfismo.
 ]
 
-#dem[
+#dem(title: "Demostración de linealidad, inyectividad e isomorfismo finito")[
 
   Veamos si $sigma$ es lineal.
 
@@ -1264,20 +1257,20 @@
   Entonces $U"*"$ es un subespacio de $vd$ llamado ortogonal de $U$ o aniquilador de $U$.
 ]
 
-#note[
+#note(title: "Convención de dimensión finita")[
 
   De ahora en adelante, para mayor comodidad, se considerarán espacios vectoriales de dimensión finita,
   $ dim(V)< infinity, quad (forall V "posterior a esta nota") $ excepto que se especifique lo contrario.
 ]
 
-#proposition()[
+#proposition(title: "Dimensión del aniquilador y caracterización de U")[
 
   Para todo espacio vectorial $V$, se verifica
   + $dim(V) eq dim(U)+dim(U"*")$
   + Si $v in V$, $v in U <==> phi(v) eq 0, quad forall phi in U"*"$
 ]
 
-#dem[
+#dem(title: "Demostración con extensión de base y base dual")[
 
   Sea ${u_1,...,u_r}$ una base de $U$.
 
@@ -1332,7 +1325,7 @@
   Así que$v eq sum_(i eq 1)^k x_i u_i in U$.
 ]
 
-#remark()[
+#remark(title: "Sistema de ecuaciones para describir subespacios")[
 
   Sean $V$ un K-espacio vecorial de dimensión $n$, $base eq {v_1,...,v_n}$ una base de $V$, $U$ un subespacio de $V$ y ${phi_1,...,phi_s}$ una base de $U"*"$.
 
@@ -1343,7 +1336,7 @@
   $
 ]
 
-#example[
+#example(title: "Ejemplo pendiente")[
 
 
 ]
@@ -1362,7 +1355,7 @@
   $
 ]
 
-#definition()[
+#definition(title: "Dual de una aplicación lineal")[
 
   Sean $V, V'$ K-espacios vectoriales tales que $f: V to V'$ es una aplicación lineal.
   $
@@ -1378,7 +1371,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Matriz del dual como traspuesta")[
 
   Sean
   $
@@ -1393,7 +1386,7 @@
   $
 ]
 
-#dem[
+#dem(title: "Demostración por evaluación en bases duales")[
 
   Sea
   $
@@ -1445,7 +1438,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Traspuesta del producto de matrices")[
 
   Sean $A in M_(m times n) (K)$ y $B in M_(n times m) (K)$, luego se verifica
   $
@@ -1453,7 +1446,7 @@
   $
 ]
 
-#dem[
+#dem(title: "Demostración mediante dual de la composición")[
 
   Definamos $V to^f V' to^g V''$ con bases $base, base', base''$ respectivamente, tales que
   $
@@ -1470,12 +1463,12 @@
   $
 ]
 
-#example[
+#example(title: "Ejemplo pendiente")[
 
 
 ]
 
-#proposition()[
+#proposition(title: "Inversa de la traspuesta")[
 
   Sea $A in M_n (K)$ una matriz no singular, entonces
   $
@@ -1483,7 +1476,7 @@
   $
 ]
 
-#dem[
+#dem(title: "Demostración con cambios de base en el dual")[
 
   Sean
   $
@@ -1501,7 +1494,7 @@
   $
 ]
 
-#example[
+#example(title: "Ejemplo pendiente")[
 
 
 ]
@@ -1514,7 +1507,7 @@
   $
 ]
 
-#lemma[
+#lemma(title: "Núcleo del dual y aniquilador de la imagen")[
 
   Sea $f: V to V'$ una aplicación lineal. Se verifica
   $
@@ -1522,7 +1515,7 @@
   $
 ]
 
-#dem[
+#dem(title: "Demostración por equivalencias de definición")[
 
   Para $Phi in ker(fd)$ se tiene
   $
@@ -1535,7 +1528,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Igualdad de rango entre f y su dual")[
 
   Siempre se verifica:
   $
@@ -1543,7 +1536,7 @@
   $
 ]
 
-#dem[
+#dem(title: "Demostración por dimensión y aniquilador")[
 
   Por definición:
   $
@@ -1553,7 +1546,7 @@
   $
 ]
 
-#definition()[
+#definition(title: "Rango de una matriz por independencia de columnas")[
 
   Para $A in M_(m times n) (K)$, se considera el rango de la matriz como el número máximo de columnas linealmente independientes. Es decir, para
   $
@@ -1569,7 +1562,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Rango por columnas, filas y aplicación asociada")[
 
   Sean $A in M_(m times n) (K)$ una matriz y $f:V to V'$ una aplicación lineal con $base eq {u_1,...,u_n}$ base de $V$ y $base' eq {v_1,...,v_n}$ base de $V'$.
 
@@ -1592,7 +1585,7 @@
   Por lo tanto es equivalente medir el rango por columnas que por filas de una matriz.
 ]
 
-#proposition()[
+#proposition(title: "Caracterización de no singularidad por rango")[
 
   Sea $A in M_n (K)$, luego
   $
@@ -1600,7 +1593,7 @@
   $
 ]
 
-#dem[
+#dem(title: "Demostración por sobreyectividad de la aplicación asociada")[
 
   Tenemos
   $
@@ -1617,7 +1610,7 @@
   $
 ]
 
-#lemma[
+#lemma(title: "Forma canónica de una aplicación de rango r")[
 
   Sea $f: V to V'$ una aplicación lineal tal que $ran(f) eq r$.
 
@@ -1627,7 +1620,7 @@
   $
 ]
 
-#dem[
+#dem(title: "Demostración construyendo bases adaptadas")[
 
   Sea ${v_(r+1,...,v_n)}$ una base del $ker(f)$.
 
@@ -1656,7 +1649,7 @@
   En la que el cuadrado superior derecho coincide con las combinaciones lineales de $v_1$ hasta $v_r$ y el resto, todo ceros, es el completamieno de la base.
 ]
 
-#corollary()[
+#corollary(title: "Forma canónica equivalente para matrices de rango r")[
 
   Sea $A in M_(m times n) (K)$ una matriz de rango $r$, esto significa que las matrices
   $
@@ -1665,7 +1658,7 @@
   son equivalentes.
 ]
 
-#dem[
+#dem(title: "Demostración vía aplicación lineal asociada")[
 
   Sea $A in M_(m times n) (K)$, luego existe
   $
@@ -1673,7 +1666,7 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Equivalencia de matrices y coincidencia de rango")[
 
   Sean $A,b in M_(m times n)(K)$, entonces
   $
@@ -1681,7 +1674,7 @@
   $
 ]
 
-#dem[
+#dem(title: "Demostración de equivalencia por forma canónica")[
 
   "$<==$"
 
@@ -1786,7 +1779,7 @@
   y se pasa la fila $i$ de A a la posición $j$ y viceversa.
 ]
 
-#note[
+#note(title: "Notación alternativa de operaciones elementales")[
   Otra notación para cada una de las operaciones puede ser:
   $
     T_(i j) (lambda) equiv E_(F_i `lambda F_j) \
@@ -1804,12 +1797,12 @@
   Y diremos que está escalonada reducida si los pivotes son $1$'s y en las columnas de los pivotes todos los coeficientes son $0$ salvo el pivote.
 ]
 
-#example[
+#example(title: "Ejemplo pendiente")[
 
 
 ]
 
-#definition()[
+#definition(title: "Equivalencia por filas")[
 
   Las matrices $A$ y $B$ son equivalentes por filas si existen matrices elementales $E_1,...,E_q$ tales que
   $
@@ -1817,12 +1810,12 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Equivalencia por filas implica equivalencia")[
 
   Si dos matrices son equivalentes por filas entonces las matrices son equivalentes.
 ]
 
-#dem[
+#dem(title: "Demostración por invertibilidad de matrices elementales")[
 
   Al ser todas las matrices elementales, no singulares, la definición de equivalencia por filas verifica la de equivalencia:
   $
@@ -1832,19 +1825,19 @@
   $
 ]
 
-#proposition()[
+#proposition(title: "Existencia de forma escalonada y unicidad reducida")[
 
   Toda matriz es equivalente por filas a una matriz escalonada y es equivalente por filas a una única matriz escalonada reducida.
 ]
 
-#proposition()[
+#proposition(title: "Criterio de no singularidad por equivalencia con I_n")[
 
   Sea la matriz $A in M_n (K)$. Son equivalentes:
   + $A$ es no singular.
   + $A$ y $I_n$ son equivalentes por filas.
 ]
 
-#dem[
+#dem(title: "Demostración del criterio por operaciones elementales")[
 
   $2.=>1.$
 
