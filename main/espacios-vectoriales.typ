@@ -59,7 +59,7 @@
 ]
 
 #remark()[
-  Trivialmente, si $U$ es un espacio o un subestacio vectorial, siempre se va a tener:
+  Trivialmente, si $U$ es un espacio o un subespacio vectorial, siempre se va a tener:
   $
     0 in U
   $
@@ -209,7 +209,7 @@ $
   $
     gen(S) eq gen(S without {w}) <==> w in gen(S without {w})
   $
-  generalmete, $0 in S$, así
+  generalmente, $0 in S$, así
   $
     gen(S) eq gen(S without {0}).
   $
@@ -1316,7 +1316,7 @@ Es equivalente el enunciado del Lema de Zorn.
     to-offset: (0pt, 3pt),
   )
 
-  #place(right, dx: -95pt, dy: -33.5pt)[
+  #place(right, dx: -95pt, dy: -80.5pt)[
     #figure(
       cetz.canvas({
         import cetz.draw: *
@@ -1328,7 +1328,7 @@ Es equivalente el enunciado del Lema de Zorn.
 ]
 
 #idea()[
-  Para la facilitación en la aplicación de este método, es recomendable colocar los números mas sencillos de operar arriba (como los 1). También resulta mejor evitar las fracciones.
+  Para la facilitación en la aplicación de este método, es recomendable colocar los números más sencillos de operar arriba (como los 1). También resulta mejor evitar las fracciones.
 ]
 
 #example[
@@ -1471,7 +1471,7 @@ Es equivalente el enunciado del Lema de Zorn.
   $
   Sigue siendo base.
 
-  Ahora podemos introsucir otro vector independiente
+  Ahora podemos introducir otro vector independiente
   $
     u_2 eq (0,1,1)
   $
@@ -1650,7 +1650,7 @@ Es equivalente el enunciado del Lema de Zorn.
 
 #dem[
 
-  Sigamos con la eqivalencia 2.
+  Sigamos con la equivalencia 2.
 
   "$==>$"
 
@@ -1726,7 +1726,7 @@ Es equivalente el enunciado del Lema de Zorn.
 
   Si hubiesemos considerado $f'(x,y) eq (1, x+y)$ que no es inyectiva, se tendría $S' eq {(1,1),(1,1)}$ que es linealmente dependiente.
 
-  Por otro lado, como $f$ es sobreyectiva, $gen((1,1)","(0,1)) eq V' eq RR^2$, pero si volvemos a considerar $f'$, esto tampoco se sumpliría por no ser esta sobreyectiva.
+  Por otro lado, como $f$ es sobreyectiva, $gen((1,1)","(0,1)) eq V' eq RR^2$, pero si volvemos a considerar $f'$, esto tampoco se cumpliría por no ser esta sobreyectiva.
 ]
 
 #corollary()[

@@ -74,7 +74,7 @@
 ]
 
 #example()[
-  Consderando un sistema de ecuaciones lineal sencillo
+  Considerando un sistema de ecuaciones lineal sencillo
   $
     cases(x+y eq 0)
   $

@@ -51,7 +51,7 @@
 ]
 
 #exercise()[
-  Estudia si la aplicación $f:RR^3 to RR^3$ definifa por $f(x,y,z) eq (0,x-y,y)$ es lineal y en caso afirmativo estudia $ker (f)$ y $im (f)$.
+  Estudia si la aplicación $f:RR^3 to RR^3$ definida por $f(x,y,z) eq (0,x-y,y)$ es lineal y en caso afirmativo estudia $ker (f)$ y $im (f)$.
 
   #solution()[
 

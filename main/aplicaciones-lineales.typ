@@ -16,7 +16,7 @@
 
 #definition(title: "Matriz")[
 
-  Una matriz de orden (o tipo o tamaño) $m times n$ con coeficientes en el cuerpo $K$ es un conjuntod e $m times n$ escalares colocados en filas o en columnas.
+  Una matriz de orden (o tipo o tamaño) $m times n$ con coeficientes en el cuerpo $K$ es un conjunto de $m times n$ escalares colocados en filas o en columnas.
   $
     A eq (a_(i j))_cases(delim: #none, 1 <= i <= m, 1 <= j <= n) #footnote[en general, emplearemos la notación $(a_(i j))_(i j)$ para representar $(a_(i j))_cases(delim: #none, 1 <= i <= m, 1 <= j <= n)$ por comodidad.] eq mat(
       a_(1,1), dots, a_(1,n);
@@ -27,7 +27,7 @@
   En concreto, si:
   - $m eq n$, se denomina _matriz cuadrada_,
   - $m times 1$, es _matriz columna_,
-  - $1 times n$, es _matrix fila_
+  - $1 times n$, es _matriz fila_
 
 ]
 
@@ -123,7 +123,7 @@
     base eq {v_1,...,v_n} "base de" V \
     base' eq {v'_1,...,v'_m} "base de" V'
   $
-  LLamamos matriz asociada a $f$ respecto de $base$ y $base'$
+  Llamamos matriz asociada a $f$ respecto de $base$ y $base'$
   $
     (f)_(base base') eq (a_(i j)) in M_(m times n) (K)
   $
@@ -197,7 +197,7 @@
     (f)_(cal(C) cal(C)) eq mat(#text(fill: academic-colors.primary)[1], #text(fill: academic-colors.primary)[1], #text(fill: academic-colors.primary)[0] ; #text(fill: academic-colors.success)[0], #text(fill: academic-colors.success)[1], #text(fill: academic-colors.success)[0] ; #text(fill: academic-colors.error)[0], #text(fill: academic-colors.error)[0], #text(fill: academic-colors.error)[1])
   $
 
-  Luego para verficar, se debería cumplir $f(v) eq (f)_(cal(C) cal(C)) · v$, así
+  Luego para verificar, se debería cumplir $f(v) eq (f)_(cal(C) cal(C)) · v$, así
   $
     mat(#text(fill: academic-colors.primary)[1], #text(fill: academic-colors.success)[1], #text(fill: academic-colors.error)[0] ; #text(fill: academic-colors.primary)[0], #text(fill: academic-colors.success)[1], #text(fill: academic-colors.error)[0] ; #text(fill: academic-colors.primary)[0], #text(fill: academic-colors.success)[0], #text(fill: academic-colors.error)[1]) mat(x; y; z) eq mat(x +y+0; 0+y+0; 0+0+z) eq mat(x+y; y; z)
   $
@@ -531,7 +531,7 @@
   $
   se dice que $A$ es invertible o no singular y que $B$ es la inversa de $A$.
 
-  Tambien se denota
+  También se denota
   $
     B eq A^(-1)
   $
@@ -923,11 +923,11 @@
   $
     phi_j (v) eq phi_j (sumi a_i v_i) eq sumi a_i phi_j (v_i)
   $
-  Que sustituyendo de nuev
+  Que sustituyendo de nuevo
   $
     phi_j (v) eq sumi a_i delta_(i j) eq a_j
   $
-  Luego $a_i eq phi_i (v)$, por lo que en en la expresión inicial:
+  Luego $a_i eq phi_i (v)$, por lo que en la expresión inicial:
   $
     v eq sumi phi_i (v) v_i
   $
@@ -1065,9 +1065,9 @@
 
   Y en general, para cualquier elemento $(x,y) in RR^2$ se le asocia un valor escalar $c in K eq RR$.
 
-  El conjunto de todos los coovectores, es decir, todas las posibles funciones lineales que asignen valores de $R$ a elementos de $V eq RR^2$ es el espacio dual de $V$ ($hat(V)$).
+  El conjunto de todos los covectores, es decir, todas las posibles funciones lineales que asignen valores de $R$ a elementos de $V eq RR^2$ es el espacio dual de $V$ ($hat(V)$).
 
-  Otros ejemplos de coovectores de $RR^2$ pueden ser:
+  Otros ejemplos de covectores de $RR^2$ pueden ser:
 
   - $f(x,y) eq y to quad$ las lineas de equivalencia son las horizontales.
   - $f'(x,y) eq y-2 to quad$ las lineas son las horizontales desplazadas 2 unidades.
@@ -1238,7 +1238,7 @@
   $
   Luego $sigma$ es inyectiva.
 
-  finalmente, veamos que si la dimensión de $V$ es dinita, $sigma$ es un isomorfismo.
+  finalmente, veamos que si la dimensión de $V$ es finita, $sigma$ es un isomorfismo.
   $
     cases(reverse: #true, dim(V)<infinity then dim(vd) eq dim(V), dim(bidual(V)) dim(vd)) then dim(V) eq dim(bidual(V))
   $
@@ -1327,7 +1327,7 @@
 
 #remark(title: "Sistema de ecuaciones para describir subespacios")[
 
-  Sean $V$ un K-espacio vecorial de dimensión $n$, $base eq {v_1,...,v_n}$ una base de $V$, $U$ un subespacio de $V$ y ${phi_1,...,phi_s}$ una base de $U"*"$.
+  Sean $V$ un K-espacio vectorial de dimensión $n$, $base eq {v_1,...,v_n}$ una base de $V$, $U$ un subespacio de $V$ y ${phi_1,...,phi_s}$ una base de $U"*"$.
 
   Luego para $v eq sum_(i eq 1)^n x_i u_i in V$
   $
@@ -1424,7 +1424,7 @@
   $
     fd(Phi_k) eq sum_(i eq 1)^n a_(k i) phi_i
   $
-  Esto significa que las cordenadas de $fd(Phi_k)$ en la base $bd$ son:
+  Esto significa que las coordenadas de $fd(Phi_k)$ en la base $bd$ son:
   $
     (a_(k 1), a_(k 2), ..., a_(k n))
   $
@@ -1480,8 +1480,8 @@
 
   Sean
   $
-    id_V : V to V quad (base, base' "bases respectiamente") \
-    id_vd : vd to vd quad (bd, bd' "bases respectiamente")
+    id_V : V to V quad (base, base' "bases respectivamente") \
+    id_vd : vd to vd quad (bd, bd' "bases respectivamente")
   $
   Tales que definen:
   $

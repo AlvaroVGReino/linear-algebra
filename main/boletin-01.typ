@@ -30,7 +30,7 @@
 ]
 
 #exercise()[
-  Dá un ejemplo de espacio vectorial con 4 elementos.
+  Da un ejemplo de espacio vectorial con 4 elementos.
 
   #solution()[
     #text(1cm)[Por completar]
