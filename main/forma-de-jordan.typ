@@ -12,5 +12,7 @@
 #pagebreak()
 
 
-= Clasificación de endomorfismos
+= La forma de Jordan
+
+
 

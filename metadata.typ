@@ -31,10 +31,10 @@
 #let doc = (
   title: [*Álgebra Lineal*],
   abbr: "Math",
-  subtitle: [_Apuntes y Boletines_],
+  subtitle: [_Apuntes de materia_],
   url: "-----------------------",
   logos: (
-    tp_topleft: image("resources/img/synd.svg", height: 1.2cm),
+    //tp_topleft: image("resources/img/synd.svg", height: 1.2cm),
     tp_topright: image("resources/img/logo_usc.svg", height: 1.5cm),
     tp_main: titlepage_logo,
     header: image("resources/img/project-logo.svg", width: 2.5cm),

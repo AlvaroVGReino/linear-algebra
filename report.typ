@@ -44,18 +44,16 @@
 //-------------------------------------
 // Content
 //
+#include "./main/intro.typ"
 // Apuntes
 //
 #include "./main/espacios-vectoriales.typ"
 #include "./main/aplicaciones-lineales.typ"
 #include "./main/sistemas-de-ec-lineales.typ"
 #include "./main/determinantes.typ"
-#include "./main/clasificacion-de-endomorfismos.typ"
+#include "./main/diagonalizacion.typ"
+#include "./main/forma-de-jordan.typ"
 
-// Boletines
-//
-#include "./main/boletin-01.typ"
-#include "./main/boletin-03.typ"
 //
 //
 

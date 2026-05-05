@@ -74,6 +74,8 @@
 
 #let sumim = $sum_(i eq 1)^m$
 
+#let sumin = $sum_(i eq 1)^n$
+
 #let sumjn = $sum_(j eq 1)^n$
 
 #let fd = $dual(f)$

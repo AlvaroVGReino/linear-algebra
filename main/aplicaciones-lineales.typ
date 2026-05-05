@@ -946,7 +946,7 @@
 
 ]
 
-#example(title: "Covector en RR^2 y líneas equipotenciales")[
+#example(title: [Covector en $RR^2$ y líneas equipotenciales])[
 
   Sea $V eq RR^3$. Consideremos una función lineal $f in hat(V)$ que lleve los vectores de $V$ a un escalar. Por ejemplo:
   $
@@ -956,112 +956,105 @@
 
   #let body = ""
 
-  #wrap-content(
-    [
-      #figure(
-        kind: "Figura",
-        supplement: [*Figura*],
-        cetz.canvas({
-          import cetz.draw: *
-          scale(y: 75%, x: 75%)
-          grid(
-            (-4, -4),
-            (4, 4),
-            help-lines: true,
-            name: "V",
-          )
-          set-style(mark: (symbol: ")>"))
-          content((3, 4.5))[
-            $V eq RR^2$
-          ]
-          // Ejes
-          line((-4, 0), (4, 0))
-          line((0, -4), (0, 4))
+  #align(center)[
+    #figure(
+      kind: "Figura",
+      supplement: [*Figura*],
+      cetz.canvas({
+        import cetz.draw: *
+        scale(y: 75%, x: 75%)
+        grid(
+          (-4, -4),
+          (4, 4),
+          help-lines: true,
+          name: "V",
+        )
+        set-style(mark: (symbol: ")>"))
+        content((3, 4.5))[
+          $V eq RR^2$
+        ]
+        // Ejes
+        line((-4, 0), (4, 0))
+        line((0, -4), (0, 4))
 
-          //Puntos representativos
-          circle((1, 0), name: "a", radius: 2pt)
-          content(
-            "a",
-            text(fill: academic-colors.neutral-dark.lighten(40%))[$(1,0)$],
-            anchor: "south-west",
-            padding: .15,
-          )
-          circle((0, 1), name: "c", radius: 2pt)
-          content(
-            "c",
-            text(fill: academic-colors.neutral-dark.lighten(40%))[$(0,1)$],
-            anchor: "south-west",
-            padding: .1,
-          )
-          circle((2, -1), name: "d", radius: 2pt)
-          content(
-            "d",
-            text(fill: academic-colors.neutral-dark.lighten(40%))[$(2,-1)$],
-            anchor: "north-east",
-            padding: .1,
-          )
-          circle((3, -2), name: "e", radius: 2pt)
-          content(
-            "e",
-            text(fill: academic-colors.neutral-dark.lighten(40%))[$(3,-2)$],
-            anchor: "north-east",
-            padding: .1,
-          )
-          circle((-1.5, 2.5), radius: 2pt)
-          circle((-2, 3), radius: 2pt)
-          circle((-1, 2), radius: 2pt)
+        //Puntos representativos
+        circle((1, 0), name: "a", radius: 2pt)
+        content(
+          "a",
+          text(fill: academic-colors.neutral-dark.lighten(40%))[$(1,0)$],
+          anchor: "south-west",
+          padding: .15,
+        )
+        circle((0, 1), name: "c", radius: 2pt)
+        content(
+          "c",
+          text(fill: academic-colors.neutral-dark.lighten(40%))[$(0,1)$],
+          anchor: "south-west",
+          padding: .1,
+        )
+        circle((2, -1), name: "d", radius: 2pt)
+        content(
+          "d",
+          text(fill: academic-colors.neutral-dark.lighten(40%))[$(2,-1)$],
+          anchor: "north-east",
+          padding: .1,
+        )
+        circle((3, -2), name: "e", radius: 2pt)
+        content(
+          "e",
+          text(fill: academic-colors.neutral-dark.lighten(40%))[$(3,-2)$],
+          anchor: "north-east",
+          padding: .1,
+        )
+        circle((-1.5, 2.5), radius: 2pt)
+        circle((-2, 3), radius: 2pt)
+        circle((-1, 2), radius: 2pt)
 
 
-          //Vector representativo
-          line((4, -3), (-3, 4), name: "v", stroke: academic-colors.primary)
-          content(
-            ("v.start", 81%, "v.end"),
-            text(size: 10pt)[$f(x,y) eq 1$],
-            anchor: "south",
-            angle: -45deg,
-            padding: .1,
-          )
+        //Vector representativo
+        line((4, -3), (-3, 4), name: "v", stroke: academic-colors.primary)
+        content(
+          ("v.start", 81%, "v.end"),
+          text(size: 10pt)[$f(x,y) eq 1$],
+          anchor: "south",
+          angle: -45deg,
+          padding: .1,
+        )
 
-          //Vector representativo
-          line((2, -4), (-4, 2), name: "w", stroke: academic-colors.primary)
-          content(
-            ("w.start", 81%, "w.end"),
-            text(size: 10pt)[$f(x,y) eq -2$],
-            anchor: "south",
-            angle: -45deg,
-            padding: .1,
-          )
+        //Vector representativo
+        line((2, -4), (-4, 2), name: "w", stroke: academic-colors.primary)
+        content(
+          ("w.start", 81%, "w.end"),
+          text(size: 10pt)[$f(x,y) eq -2$],
+          anchor: "south",
+          angle: -45deg,
+          padding: .1,
+        )
 
-          //Vector representativo
-          line((0, -4), (-4, 0), name: "w", stroke: academic-colors.primary)
-          content(
-            ("w.start", 50%, "w.end"),
-            text(size: 10pt)[$f(x,y) eq -4$],
-            anchor: "south",
-            angle: -45deg,
-            padding: .1,
-          )
-        }),
-        caption: [Representación gráfica de las \ lineas equipotenciales de un covector \ de $RR^2$.],
-      )<fig:equival-dual>
-    ],
-    [
-      Por lo que al ser lineal, si tomaremos todos los valores tales que $x+y eq 1$, nos daría una lineal recta en $V$. Para los $x+y eq 0$ nos daría otra recta paralela.
+        //Vector representativo
+        line((0, -4), (-4, 0), name: "w", stroke: academic-colors.primary)
+        content(
+          ("w.start", 50%, "w.end"),
+          text(size: 10pt)[$f(x,y) eq -4$],
+          anchor: "south",
+          angle: -45deg,
+          padding: .1,
+        )
+      }),
+      caption: [Representación gráfica de las \ lineas equipotenciales de un covector \ de $RR^2$.],
+    )<fig:equival-dual>
+  ]
 
-      Gráficamente, lo podríamos ver como en la @fig:equival-dual
+  Por lo que al ser lineal, si tomaremos todos los valores tales que $x+y eq 1$, nos daría una lineal recta en $V$. Para los $x+y eq 0$ nos daría otra recta paralela.
 
-      $quad quad quad f(1,0) eq 1+0 eq 1$
+  Gráficamente, lo podríamos ver como en la @fig:equival-dual
 
-      $quad quad quad f(0,1) eq 0+1 eq 1$
-
-      $quad quad quad f(2,-1) eq 2-1 eq 1$
-
-      $quad quad quad f(3,-2) eq 3-2 eq 1$
-
-    ],
-    align: right,
-    column-gutter: 1pt,
-  )
+  $
+    f(1,0) eq 1+0 eq 1\
+    f(0,1) eq 0+1 eq 1\
+    f(2,-1) eq 2-1 eq 1\
+    f(3,-2) eq 3-2 eq 1
+  $
 
   Y en general, para cualquier elemento $(x,y) in RR^2$ se le asocia un valor escalar $c in K eq RR$.
 
@@ -1078,7 +1071,7 @@
 
 ]
 
-#example(title: "Cálculo explícito de la base dual en RR^4")[
+#example(title: [Cálculo explícito de la base dual en $RR^4$])[
 
   Tomemos
   $
@@ -1779,7 +1772,7 @@
   y se pasa la fila $i$ de A a la posición $j$ y viceversa.
 ]
 
-#note(title: "Notación alternativa de operaciones elementales")[
+#note()[
   Otra notación para cada una de las operaciones puede ser:
   $
     T_(i j) (lambda) equiv E_(F_i `lambda F_j) \
@@ -1830,7 +1823,7 @@
   Toda matriz es equivalente por filas a una matriz escalonada y es equivalente por filas a una única matriz escalonada reducida.
 ]
 
-#proposition(title: "Criterio de no singularidad por equivalencia con I_n")[
+#proposition(title: [Criterio de no singularidad por equivalencia con $I_n$])[
 
   Sea la matriz $A in M_n (K)$. Son equivalentes:
   + $A$ es no singular.

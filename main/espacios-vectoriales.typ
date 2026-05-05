@@ -1,5 +1,5 @@
 #import "../metadata.typ": *
-
+#import "@preview/clean-cnam-template:1.6.2": *
 #import "../enviroments.typ": *
 
 #import "../temp/math.typ": *
@@ -18,7 +18,10 @@
 #pagebreak()
 
 = Espacios Vectoriales
-#definition(title: "Espacio Vectorial")[
+
+== Definición y Propiedades Básicas
+
+#definition(title: [Espacio vectorial])[
 
   Se dice que un conjunto $V eq.not emptyset$ es un espacio vectorial sobre un cuerpo $(K,+,·)$ o que es un K-espacio vectorial si:
 
@@ -39,12 +42,14 @@
 
 #idea()[
   $
-    K #text()[cuerpo] <==> cases((K,+) #text()[abeliano], (K without {0}) #text()[abeliano])
+    K #text()[cuerpo] <==> cases((K,+) #text()[abeliano], (K without {0}, dot) #text()[abeliano])
   $
 ]
 
+== Subespacios Vectoriales
+
 #definition(
-  title: "Subespacio vectorial",
+  title: [Subespacio],
 )[
 
   Sea $U eq.not emptyset$ y $U subset V$. $U$ es un subespacio vectorial de $V$ si es un espacio vectorial con las operaciones de $V$:
@@ -105,7 +110,7 @@
   - $U eq {(x,y) in RR^2 : x + y = 1}$ se tiene que $U eq.not emptyset$ pero como $0 + 0 eq.not 1 =>(0,0) in.not U$ no es un espacio vectorial.
 ]
 
-#proposition()[
+#proposition(title: [Propiedades])[
 
   Para todo $lambda in K$ y $v in V$ se verifica:
   1. $
@@ -147,7 +152,7 @@
 ]
 
 
-#definition(title: "Subespacio generado")[
+#definition(title: [Subespacio generado])[
 
   Sea $S subset V$, se llama subespacio generado por $S$ o $chevron.l S chevron.r$ al menor subespacio de $V$ que contiene a $S$
   $
@@ -157,6 +162,8 @@
 
   Cuando $S eq emptyset$, $chevron.l S chevron.r eq {0}$
 ]
+
+== Subespacios Generados y Combinaciones Lineales
 
 Sean $V_1,V_2,...,V_n$ K-espacios vectoriales, entonces $V_1 times V_2 times ... times V_n$ es un K-espacio vectorial y puede operar de la siguiente manera:
 
@@ -168,7 +175,7 @@ $
   lambda · (v_1,v_2,...,v_n) eq (lambda · v_1,lambda · v_2,...,lambda · v_n) in V_1 times V_2 times ... times V_n
 $
 
-#definition()[
+#definition(title: [Combinacion lineal])[
 
   Sea $S subset V$, $S eq.not emptyset$. Una combinación lineal de elementos de $S$ es un vector  de $V$ de la forma:
   $
@@ -180,7 +187,7 @@ $
   $
 ]
 
-#definition()[
+#definition(title: [Finitamente generado])[
 
   Diremos que $V$ es un espacio vectorial finitamente generado si tienen un conjunto de generadores finito, es decir, $S subset V$ es finito y $chevron.l S chevron.r eq V$.
 ]
@@ -223,15 +230,15 @@ $
   $
 ]
 
-#definition(title: "Suma directa")[
+#definition(title: [Suma directa])[
 
   Sean $U$ y $W$ subespacios de $V$. Llamamos suma directa de $U$ y $W$ a su subespacio suma si su intersección es ${0}$. Es decir
   $
-    U inter W = {0} => U plus.o W
+    U inter W = {0} => U plus.o W quad (equiv U plus W)
   $
 ]
 
-#definition(title: "Subespacios suplementarios")[
+#definition(title: [Suplementarios])[
 
   Se dice que $U$ y $W$ son suplementarios si
   $
@@ -243,7 +250,7 @@ $
   $
 ]
 
-#theorem()[
+#theorem(title: [Descomposición única])[
 
   Si existe $U plus.o W$, todo vector de $U + W$ se puede escribir de forma única como $u+w$ con $u in U$ y $w in W$
 
@@ -257,7 +264,10 @@ $
     => u=0=w=u'=w'
   $
 ]
-#definition()[
+
+== Aplicaciones Lineales
+
+#definition(title: [Aplicación lineal])[
 
   Sean $V$ y $V'$ K-espacios vectoriales. Se dice que la aplicación $f:V to V'$ es un aplicación lineal si se verifica:
   1. $
@@ -285,7 +295,7 @@ $
     $
 ]
 
-#proposition()[
+#proposition(title: [Imagen y preimagen])[
 
   Sea $f: V to V'$ es un aplicación lineal
   1. Si $U$ es un subespacio de $V$, entonces $f(U) eq {f(u) : u in U}$ es un subespacio de $V'$. También, si $U eq gen(S)$, se cumple $f(U) eq gen(f(S))$.
@@ -303,7 +313,7 @@ $
   2. Es análogo.
 ]
 
-#definition()[
+#definition(title: [Imagen y núcleo])[
 
   Sea $f: V to V'$ una apliación lineal.
 
@@ -318,7 +328,7 @@ $
   $
 ]
 
-#proposition()[
+#proposition(title: [Caracterización de la inyectividad y sobreyectividad])[
 
   Sea $f: V to V'$ una aplicación lineal.
   1. $f$ es inyectiva $<==> ker(f) eq 0$
@@ -333,7 +343,7 @@ $
   2. Es trivial.
 ]
 
-#definition(title: "Isomorfismo")[
+#definition(title: [Isomorfismo])[
 
   Una aplicación lineal $f: V to V'$ se dice que es un isomorfismo cuando es biyectiva. Si además $V eq V'$ se dice que es un automorfismo de $V$.
 ]
@@ -354,11 +364,15 @@ $
 ]
 
 #proposition()[
+  $
+    f "isomorfismo" <==> f^(-1) "isomorfismo"
+  $
 
-  $f$ isomorfismo $<==> f^(-1)$ isomorfismo
 ]
 
-#definition()[
+== Espacios Cociente
+
+#definition(title: [Relación de equivalencia implícita por un subespacio ])[
 
   Si $V$ es un K-espacio vectorial y $U$ un subespacio de $V$, $U$ define en $V$ la siguiente relación de equivalencia:
 
@@ -442,7 +456,7 @@ $
 ]
 
 
-#proposition()[
+#proposition(title: [Espacio cociente])[
 
   $V slash U$ es espacio vectorial, para todo $v + U in V slash U$, se tiene
   $
@@ -474,7 +488,7 @@ $
   El producto es análogo.
 ]
 
-#definition()[
+#definition(title: [Proyección canónica])[
 
   La aplicación de paso al cociente
   $
@@ -493,7 +507,7 @@ $
   Dicho de otra manera, los únicos vectores de $V$ que difieren 0 de $U$ son los que pertenecen a $U$.
 ]
 
-#proposition()[
+#proposition(title: [Relación inducida de cocientes])[
 
   Sea $f:V to V'$ una aplicación lineal,
   $
@@ -512,7 +526,7 @@ $
   Por lo tanto, cada clase de equivalencia de $V slash ~_f$ es una translación del subespacio $ker(f)$ y, finalmente, $V slash ~_f eq V slash ker(f)$.
 ]
 
-#proposition()[
+#proposition(title: [Factorización conónica])[
 
   Sean los factores canónicos de la aplicación $f$:
   $
@@ -534,7 +548,7 @@ $
   Como ya se ha hecho en repetidas ocasiones, quedaría demostrar que $f_1,f_2$ y $f_3$ son respectivamente sobreyectivas, biyectivas e inyectivas.
 ]
 
-#proposition()[
+#proposition(title: [Cociente doble])[
 
   Sean $U, W$ subespacios vectoriales de un K-espacio vectorial V tales que $U subset W$. Entonces,
   $
@@ -656,7 +670,7 @@ $
 ]
 
 
-#theorem(label: <theo:rel-subesp>)[
+#theorem(title: [Segundo teorema de la isomorfía], label: <theo:rel-subesp>)[
 
   Sean $U_1$ y $U_2$ subespacios del K-espacio vectorial $V$, se tiene
   $
@@ -697,14 +711,17 @@ $
   $
 ]
 
-#definition()[
+== Independencia Lineal y Bases
+
+#definition(title: [Independencia lineal])[
+
   Sea $V$ un K-espacio vectorial y $S subset V$. Se dice que $S$ es un conjunto de vectores linealmente independiente (L.I. de ahora en adelante) si:
   $
     sum lambda_i s_i eq 0 quad (lambda_i in K, s_i in S) => lambda_i eq 0 quad forall i in I
   $
 ]
 
-#definition()[
+#definition(title: [Criterio para independencia lineal])[
   $S$ es linealmente independiente si existe $sum lambda_i s_i eq 0, lambda_i in K, s_i in S, lambda_i eq 0 quad forallmost #footnote()[La notación "$forallmost$" significa "para casi todo". Referido a que existe una cantidad finita de elementos que no cumplen la condición] i in I quad (#text[con algún $lambda_i eq.not 0$])$
 ]
 
@@ -744,7 +761,7 @@ $
   ]
 ]
 
-#proposition()[
+#proposition(title: [Herencia de linealidad])[
   Sean $S_1 subset V$, $S_2 subset V$ tales que $S_1 subset S_2$ y $V$ es un K-espacio vectorial. Entonces
   + Si $S_1$ es linealmente dependiente $==> S_2$ es linealmente dependiente.
   + Si $S_2$ es L.I. $==> S_1$ es L.I..
@@ -793,14 +810,14 @@ $
     En $RR[X]$, ${1}$ es L.I. y ${1,2}$ no lo es.
 ]
 
-#definition()[
+#definition(title: [Base de una espacio vectorial])[
   Sea $V$ un K-espacio vectorial y $S subset V$. Diremos que $S$ es una base de $V$ si y solo si:
   - $S$ es L.I.,
   - $gen(S) eq V$.
   Generalmente, se denotará por $base$.
 ]
 
-#proposition()[
+#proposition(title: [Expresión única como combinación lineal de la base])[
   $
     base eq {v_1, ..., v_n} #text[es base de ] V <=> \
     forall v in V, quad exists ! lambda_1,...,lambda_n in K : quad v eq lambda_1 v_1 + ... + lambda_n v_n
@@ -869,7 +886,7 @@ $
   De ser L.I. pero no generar el espacio vectorial, habría elementos de $V$ que no se podrían expresar como combinación lineal de elementos del conjunto, por lo que no sería base.
 ]
 
-#proposition()[
+#proposition(title: [Caracterización de la base])[
   Son equivalentes
   + $S$ es una base de $V$,
   + $S$ es un conjunto minimal de generadores,
@@ -920,7 +937,7 @@ $
 
 #v(7pt)
 
-#theorem(label: <theo:bases>)[
+#theorem(title: [Completado de base], label: <theo:bases>)[
   #footnote[Este teorema requiere asumir el Axioma de elección] Sea $V$ un K-espacio vectorial tal que $T,L subset V$ con $T$ L.I. y $gen(L) eq V$, luego
   $
     exists L_0 subset L : T union L_0 "es base de " V
@@ -1048,7 +1065,7 @@ Es equivalente el enunciado del Lema de Zorn.
   En otras palabras, el @theo:bases dice que si tienes algunos vectores independientes, siempre puedes completarlos hasta una base usando vectores de cualquier conjunto generador.
 ]
 
-#corollary()[
+#corollary(title: [Existencia de base])[
   Todo espacio vectorial tiene una base.
 ]
 
@@ -1076,14 +1093,16 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#definition()[
+== Operaciones Elementales
+
+#definition(title: [Operación elemental])[
   Una operación elemental en el K-espacio vectorial $V$ es cualquiera de las siguientes transformaciones:
   + $v_i arrow.l.r v_j quad (i eq.not j)$
   + $v_i |-> lambda v_i, quad (lambda in K without {0})$
   + $v_i arrow.l.r v_i + beta v_j quad (beta in K$, $i eq.not j)$
 ]
 
-#theorem()[
+#theorem(title: [Conserva el espacio])[
   Si $S'$ es un conjunto obtenido haciendo un número finito de operaciones elementales sobre $S subset V$, se verifica
   $
     gen(S) eq gen(S')
@@ -1164,11 +1183,11 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#definition(title: "Pivote")[
+#definition(title: [Pivote])[
   Sea $K^n in.rev v eq (alpha_1, ..., alpha_n) eq.not 0$. Un pivote de $V$ es un $alpha_i : alpha_i eq.not 0$ y $alpha_j eq 0 quad forall j <i$
 ]
 
-#definition(title: "Escalonado")[
+#definition(title: [Escalonado])[
   El conjunto de vectores ${v_1,...,v_m} subset K^n$ está escalonado si se cumple lo siguiente:
   + Los vectores nulos están al final.
   + El pivote de cada vector está a la derecha del pivote de los vectores precedentes.
@@ -1355,7 +1374,7 @@ Es equivalente el enunciado del Lema de Zorn.
   Por lo que hemos completado con la canónica, que al estar escalonada, es L.I. y $gen(T^(+)) eq RR^4$
 ]
 
-#theorem(title: "Teorema de Steinitz")[
+#theorem(title: [de Steinitz])[
   Sea $V$ un K-espacio vectorial, ${u_1, ..., u_n}$ un conjunto linealmente independiente y sea $base eq {v_i}_(i in I)$ una base de $V$.
 
   Entonces existen índices $i_1,...,i_n in I$ tales que
@@ -1535,7 +1554,7 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#theorem(label: <theo:base-app-lin>)[
+#theorem(title: [Base y aplicación], label: <theo:base-app-lin>)[
 
   Sean $V$ y $V'$ K-espacios vectoriales tales que $base eq {u_i}_(i in I)$ es base de $V$ y $S eq {v_i}_(i in I) subset V'$. Entonces existe una única aplicación lineal
   $
@@ -1610,7 +1629,9 @@ Es equivalente el enunciado del Lema de Zorn.
 #dem[
 
   Veamos ahora la equivalencia 1.
+
   "$==>$"
+
   Supongamos que $f$ es inyectiva, luego si
   $
     sumi lambda_i v_i eq 0
@@ -1780,7 +1801,7 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#theorem()[
+#theorem(title: [Rango y nulidad])[
 
   Sea $f: V to V'$ una aplicación lineal, luego
   $
@@ -1985,7 +2006,7 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#theorem(title: "Formula de Grassman", label: <theo:formula-grassman>)[
+#theorem(title: [Formula de Grassman], label: <theo:formula-grassman>)[
 
   Sean $U_1$, $U_2$ subespacios vectoriales de $V$. Se tiene que:
   $
@@ -2021,7 +2042,7 @@ Es equivalente el enunciado del Lema de Zorn.
   $
 ]
 
-#proposition()[
+#proposition(title: [Coordenadas en $base$])[
 
   Sea $V$ un K-espacio vectorial tal que $dim(V) eq n$ y $base eq {u_1,...,u_n}$ es base de $V$.
 
@@ -2035,7 +2056,7 @@ Es equivalente el enunciado del Lema de Zorn.
     chi_base:V to K^n \
     chi_base (v) eq (lambda_1,...,lambda_n)
   $
-  Entonces $chi_base$ es un isomorfismo
+  Entonces $chi_base$ es un isomorfismo.
 ]
 
 #idea()[
