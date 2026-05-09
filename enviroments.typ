@@ -5,6 +5,7 @@
 #import "@preview/larrow:1.0.1": *
 #import "@preview/wrap-it:0.1.1": wrap-content
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
+#import "@preview/pavemat:0.2.0": pavemat
 
 
 #set heading(numbering: "1.1")
@@ -39,6 +40,8 @@
 #let hom = "Hom"
 
 #let ran = "Rango"
+
+#let sig = "sig"
 
 #let Ctl(sym: sym.corner.t.l) = block(align(top + left)[#scale(x: 150%, y: 150%)[#sym]])
 
