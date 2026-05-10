@@ -6,6 +6,7 @@
 #import "@preview/wrap-it:0.1.1": wrap-content
 #import "@preview/fletcher:0.5.8" as fletcher: diagram, edge, node
 #import "@preview/pavemat:0.2.0": pavemat
+#import "@preview/commute:0.3.0": arr, commutative-diagram, node
 
 
 #set heading(numbering: "1.1")
@@ -42,6 +43,8 @@
 #let ran = "Rango"
 
 #let sig = "sig"
+
+#let grad = "Grad"
 
 #let Ctl(sym: sym.corner.t.l) = block(align(top + left)[#scale(x: 150%, y: 150%)[#sym]])
 
@@ -86,6 +89,10 @@
 #let vd = $dual(V)$
 
 #let bd = $dual(base)$
+
+#let kesp = $KK"-espacio vectorial"$
+
+#let kesps = $KK"-espacios vectoriales"$
 
 
 

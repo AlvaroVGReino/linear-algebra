@@ -290,7 +290,9 @@ Si $lambda$ es un eigenvalor de $f$, es decir, si $V_lambda eq.not 0$, este sube
 
   Sea $A in M_(n times n) (KK)$ una matriz de la forma
   $
-    A eq mat(X | Y; ---; 0 | Z)
+    #align(center)[
+      #pavemat($mat(X, "", "", Y; 0, "", "", Z;)$, pave: "ddSDDaaAAddS", stroke: (black))
+    ]
   $
   con $X in M_(r times r) (KK)$, $Y in M_(r times (n-r)) (KK)$ y $Z in M_((n-r) times (n-r)) (KK)$. Entonces:
   $
@@ -335,7 +337,9 @@ Si $lambda$ es un eigenvalor de $f$, es decir, si $V_lambda eq.not 0$, este sube
   $
   Para ver la otra desigualdad, sea ${v_1,...,v_s}$ una base de $V_lambda$ y completemosla a una base $base eq {v_1,...v_s,v_(s+1),...,v_n}$ de $V$. Entonces, la matriz $A$ de $f$ con respecto a esta base es de la forma:
   $
-    A eq mat(lambda I_s | A'; ----; quad 0 | A'')
+    #align(center)[
+      #pavemat($mat(lambda I_n, "", "", A'; 0, "", "", A'';)$, pave: "ddSDDaaAAddS", stroke: (black))
+    ]
   $
   Por tanto, aplicando el @lemma:determinantes:
   $
