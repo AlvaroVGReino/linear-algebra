@@ -309,7 +309,7 @@ Para llevar esto a cabo, necesitamos un resultado previo sobre la descomposició
 
 == El Teorema de descomposición
 
-#theorem(title: [Teorema de descomposición])[
+#theorem(title: [Teorema de descomposición], label: <theo:descompsicion>)[
 
   Sea $f in end_KK (V)$, y supongamos que todas la raíces de $p_f (x)$ estan en $KK$:
   $
@@ -407,11 +407,166 @@ Para llevar esto a cabo, necesitamos un resultado previo sobre la descomposició
 
   Si $A_i$ es la matriz de $f_i$ con respecto a una base de $W_i$, y unimos estas bases para formar una base de $V$, entonces la matriz de $f$ respecto a esta base es:
   $
-    A eq mat(A_1, 0, ..., 0; 0, A_2, ..., 0; dots.v, dots.v, dots.down, dots.v; 0, 0, ..., A_r)
+    A eq mat(
+      A_1, 0, ..., 0;
+      0, A_2, ..., 0;
+      dots.v, dots.v, dots.down, dots.v;
+      0, 0, ..., A_r
+    )
   $
   es la matriz formada a partir de las matrices $A_1,...,A_r$ con diagonal sobre la diagonal de $A$, y 0 en todos los deás lugares.
 ]
 
 == La forma de Jordan
 
+Comenzaremos dando la definición de Jordan.
 
+#definition(title: [Matriz de Jordan])[
+
+  Para un entero $l >=1$ y un $lambda in KK$, la matriz triangular:
+
+  $
+    J_lambda (l) eq mat(lambda, 1, 0, ..., 0, ; 0, lambda, 1, ..., 0; dots.v, dots.v, dots.v, dots.down, dots.v; 0, 0, 0, ..., 1; 0, 0, 0, ..., lambda) in M_(l times l) (KK)
+  $
+  Con $lambda$ en los lugares $(a_(i i))$, 1 em los lugares $(a_(i, i+1))$ y 0 en todos los demás lugares, se llama bloque (o caja) elemental de Jordan de orden $l$ asociado a $lambda$.
+
+  Y se llama matriz de Jordan a una matriz diagonal por bloques:
+  $
+    J eq mat(L_lambda_1 (l_1), 0, ..., 0; 0, J_lambda_2 (l_2), ..., 0; dots.v, dots.v, dots.down, dots.v; 0, 0, ..., J_lambda_t (l_t)) in M_(n times n) (KK)
+  $
+  donde los $J_lambda_i (l_i)$ son bloques elementales de Jordan con los $lambda_i$ y los $l_i$ no necesariamente distintos, tales que $l_1+l_2+...l_t eq n$.
+]
+
+#note[
+
+  Nótese que una matriz diagonal es un caso particular de una matriz de Jordan en la que todos los boques elementales de Jordan son de orden 1.
+]
+
+#theorem(title: [Existencia de la base de Jordan])[
+
+  Sea $f in end_KK (V)$ un endomorfismo tal que las raíces de $p_f (x)$ están todas en $KK$. Entonces existe una base de $V$ (que se llamará base de Jordan) tal que la matriz de $f$ con respecto a esa base es una matriz de Jordan.
+]
+
+#idea[
+
+  La demostración que haremos será algorítmica: describiremos un proceso que aplicado paso a paso a un endomorfismo concreto, llega a producir la base buscada.
+
+  Para dar esa descripción necesitamos algunas consideraciones y un par de lemas previos
+]
+
+#remark(title: [Consideraciones previas])[
+
+  En las condiciones indicadas, se tiene:
+  $
+    p_f (x) eq (-1)^n (x-lambda_1)^(alpha_1) ·...· (x-lambda_r)^(alpha_r)
+  $
+  con $lambda_i in KK, 1<=i<=r, lambda_i eq.not lambda_j, forall i eq.not j$.
+
+  Los $lambda_i$ son los eigenvalores de $f$, $alpha_i$ es la multiplicidad algebraica de $lambda_i$ y $alpha_1 + ...+alpha_r eq n (eq dim(V))$.
+
+  Por el @theo:descompsicion de descomposición:
+  $
+    V eq W_1 plus.o ... plus.o W_r
+  $
+
+  con $W_i eq ker(f-lambda_i · 1_V)^(alpha_i)$ y $f(W_i) subset W_i, 1<=i<=r$.
+
+  Si se encuentra una base de Jordan para la restricción de $f$ a cada $W_i$, entonces, uniendo esas bases, se tendrá la base de Jordan buscada para $f$.
+
+  Fijemos, pues, un eigenvalor $lambda$, con multiplicidad algebraica $alpha$, denotemos $W eq ker(f-lambda · 1_V)^(alpha)$, y busquemos una base de Jordan para $f:W to W$.
+
+  Para abreviar (y puesto que $lambda$ está fijado) denotaremos $g eq f-lambda · 1_V$.
+
+  Por ser $lambda$ eigenvalor: $ker(g) eq.not 0$.
+
+  Es obvio que $ker(g^i) subset ker(g^i), forall i$, y que $ker(g^t) eq ker(g^(t+1)) then ker(g^(t+1)) eq ker(g^(t+2))$.
+
+  Luego, existe un único $s, 1<=s<=alpha$, tal que
+  $
+    0 subset.neq ker(g) subset.neq ker(g^1) subset.neq ... subset.neq ker(g^(s-1)) subset.neq ker(g^s) eq W
+  $
+  Además, $g(ker(g^i)) subset ker(g^(i-1))$, con lo que $g$ induce un homomorfismo.
+  $
+    ker(g^i) stretch(-->)^g ker(g^(i-1))
+  $
+]
+
+#lemma(title: [1], label: <lemma:1>)[
+
+  Sea $G$ un $kesp$ y $H$ un subespacio de de $G$. Si $S$ es un subconjunto linealmente independiente de $G$ tal que $gen(S) inter H eq 0$, entonces $S$ puede ser completado a una base de un subespacio suplementario $F$ de $H$.
+]
+
+#dem[
+
+  #align(center)[#commutative-diagram(
+    node((0, 1), $H$, "h"),
+    node((1, 0), $S$, "s"),
+    node((1, 1), $G$, "g"),
+    arr("s", "g", "", "inj"),
+    arr("h", "g", "", "bij"),
+  )]
+
+  Sea $base$ una base de $H$. Entonces $S union base$ es linealmente independiente y puede, por tanto, ser completado a una base $S union base union basec$ de $G$. Se toma $F eq gen(S union basec)$.
+
+  Es obvio que $S union basec$ es base de $F$ y que $F plus.o H eq G$.
+]
+
+#idea[
+
+  Visualicemos adecuadamente el enunciado del Lema siguiente, luego conviene tener presente el siguiente diagrama:
+
+  #align(center)[#scale(75%)[#commutative-diagram(
+    node((0, 0), $ker(g^(s-1))$, "s-1u"),
+    node((1, 0), $W eq ker(g^s)$, "s"),
+    node((0, 1), $ker(g^(s-2))$, "s-2u"),
+    node((1, 1), $ker(g^(s-1))$, "s-1"),
+    node((1, 2), $...$, "..."),
+    node((0, 2), $...$, "...u"),
+    node((1, 3), $ker(g^(2))$, "2"),
+    node((0, 3), $ker(g)$, "1u"),
+    node((1, 4), $ker(g)$, "1"),
+    arr("s-1u", "s", "", "inj"),
+    arr("s", "s-1", "g"),
+    arr("s-1", "...", "g"),
+    arr("...", "2", "g"),
+    arr("2", "1", "g"),
+    arr("s-2u", "s-1", "", "inj"),
+    arr("1u", "2", "", "inj"),
+    arr("1u", "...u", "g"),
+    arr("...u", "s-2u", "g"),
+    arr("s-2u", "s-1u", "g"),
+  )]]
+]
+
+#lemma(label: <lemma:2>)[
+
+  Para $2<=i<=s$, sea $F_i$ un subespacio suplementario de $ker(g^(i-1))$ en $ker(g^i)$:
+  $
+    F_i plus.o ker(g^(i -1)) eq ker(g^i)
+  $
+  Si $base_i eq {v_1,...,v_r}$ es una base de $F_i$, entonces:
+
+  + $g(base_i)$ es linealmente independiente.
+
+  + $gen(base_i) inter ker(g^(i-2)) eq 0, quad 2<=i<=s$.
+]
+
+#dem[
+
+  + $
+      sum_(j eq 1)^r a_j g(v_j) eq 0 then g(sum_(j eq 1)^r a_j v_j) eq 0 then \
+      then sum_(j eq 1)^r a_j v_j in ker(g) inter F_i subset ker(g^(i-1)) inter F_i eq 0 then \
+      then sum_(j eq 1)^r a_j v_j eq 0 then a_j eq 0 quad forall j
+    $
+
+  + Si
+    $
+      v eq sum_(j eq 1)^r a_j g(v_j) in ker(g^(i-2)) then g^(i-2)(sum_(j eq 1)^r a_j g(v_j)) eq 0 then \
+      then sum_(j eq 1)^r a_j v_j in ker(g^(i-1)) inter F_i eq 0 then a_j eq 0 forall j then v eq 0
+    $
+]
+
+#dem[
+
+  Comenzaremos eligiendo un subespacio suplementario $f_s$ de $ker(g^(s-1))$ en $ker(g^s) eq W$ y sea $base_s eq {v_(s,1),...,}$
+]
